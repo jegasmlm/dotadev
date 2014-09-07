@@ -106,6 +106,11 @@ class Hero extends AppModel {
 		)
 	);
 
+/**
+ * Funtion to get the hero with role name
+ * @param $id
+ * @return array
+ */
     public function view($id){
         $options = array('conditions' => array('Hero.' . $this->primaryKey => $id), 'contains' => array('Hero', 'RolesHero', 'Role'), 'recursive' => 2);
         return $this->find('first', $options);
