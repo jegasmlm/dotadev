@@ -6,7 +6,6 @@
 		echo $this->Form->input('name');
 		echo $this->Form->input('login');
 		echo $this->Form->input('password');
-		echo $this->Form->input('Hero');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -16,7 +15,5 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Heroes'), array('controller' => 'heroes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Hero'), array('controller' => 'heroes', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -3,9 +3,10 @@ App::uses('AppModel', 'Model');
 /**
  * Hero Model
  *
- * @property Role $Role
+ * @property Side $Side
  * @property Group $Group
- * @property User $User
+ * @property RolesHero $RolesHero
+ * @property UsersHero $UsersHero
  */
 class Hero extends AppModel {
 
@@ -25,7 +26,7 @@ class Hero extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'role_id' => array(
+		'side_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -55,9 +56,9 @@ class Hero extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Role' => array(
-			'className' => 'Role',
-			'foreignKey' => 'role_id',
+		'Side' => array(
+			'className' => 'Side',
+			'foreignKey' => 'side_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -72,24 +73,41 @@ class Hero extends AppModel {
 	);
 
 /**
- * hasAndBelongsToMany associations
+ * hasMany associations
  *
  * @var array
  */
-	public $hasAndBelongsToMany = array(
-		'User' => array(
-			'className' => 'User',
-			'joinTable' => 'users_heroes',
+	public $hasMany = array(
+		'RolesHero' => array(
+			'className' => 'RolesHero',
 			'foreignKey' => 'hero_id',
-			'associationForeignKey' => 'user_id',
-			'unique' => 'keepExisting',
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
 			'limit' => '',
 			'offset' => '',
+			'exclusive' => '',
 			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'UsersHero' => array(
+			'className' => 'UsersHero',
+			'foreignKey' => 'hero_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 
+    public function view($id){
+        $options = array('conditions' => array('Hero.' . $this->primaryKey => $id), 'contains' => array('Hero', 'RolesHero', 'Role'), 'recursive' => 2);
+        return $this->find('first', $options);
+    }
 }

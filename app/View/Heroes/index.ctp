@@ -5,7 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('role_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('side_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('group_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('image'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -18,8 +18,12 @@
 	<tr>
 		<td><?php echo h($hero['Hero']['id']); ?>&nbsp;</td>
 		<td><?php echo h($hero['Hero']['name']); ?>&nbsp;</td>
-		<td><?php echo h($hero['Hero']['role_id']); ?>&nbsp;</td>
-		<td><?php echo h($hero['Hero']['group_id']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?>
+		</td>
+		<td>
+			<?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?>
+		</td>
 		<td><?php echo h($hero['Hero']['image']); ?>&nbsp;</td>
 		<td><?php echo h($hero['Hero']['created']); ?>&nbsp;</td>
 		<td><?php echo h($hero['Hero']['modified']); ?>&nbsp;</td>
@@ -50,5 +54,13 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Hero'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Side'), array('controller' => 'sides', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Group'), array('controller' => 'groups', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Roles Heros'), array('controller' => 'roles_heros', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Roles Hero'), array('controller' => 'roles_heros', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users Heros'), array('controller' => 'users_heros', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Users Hero'), array('controller' => 'users_heros', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

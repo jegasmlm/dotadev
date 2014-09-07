@@ -36,8 +36,8 @@ class HeroesController extends AppController {
 		if (!$this->Hero->exists($id)) {
 			throw new NotFoundException(__('Invalid hero'));
 		}
-		$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
-		$this->set('hero', $this->Hero->find('first', $options));
+		//$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
+        $this->set('hero', $this->Hero->view($id));
 	}
 
 /**
@@ -55,6 +55,9 @@ class HeroesController extends AppController {
 				$this->Session->setFlash(__('The hero could not be saved. Please, try again.'));
 			}
 		}
+		$sides = $this->Hero->Side->find('list');
+		$groups = $this->Hero->Group->find('list');
+		$this->set(compact('sides', 'groups'));
 	}
 
 /**
@@ -79,6 +82,9 @@ class HeroesController extends AppController {
 			$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
 			$this->request->data = $this->Hero->find('first', $options);
 		}
+		$sides = $this->Hero->Side->find('list');
+		$groups = $this->Hero->Group->find('list');
+		$this->set(compact('sides', 'groups'));
 	}
 
 /**
