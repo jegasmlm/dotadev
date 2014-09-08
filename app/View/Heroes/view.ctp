@@ -1,5 +1,5 @@
 <div class="heroes view">
-<h1><?php echo __('Hero'); ?></h1>
+<h2><?php echo __('Hero'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
