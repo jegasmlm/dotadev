@@ -1,49 +1,46 @@
 <div class="heroes view">
-<h2><?php echo __('Hero'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($hero['Hero']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($hero['Hero']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Side'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Group'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Image'); ?></dt>
-		<dd>
-			<?php echo $this->Html->image('http://cdn.dota2.com/apps/dota2/images/heroes/'.str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png'); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($hero['Hero']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
-			<?php echo h($hero['Hero']['modified']); ?>
-			&nbsp;
-		</dd>
-        <dt><?php echo __('Rol'); ?></dt>
-        <dd>
-            <div class="bestRol">
-                Disabler - Initiator - Nuker
+    <div class="container table-bordered">
+        <div class="row">
+            <div class="col-md-3">
+                <?php echo $this->Html->image('http://cdn.dota2.com/apps/dota2/images/heroes/'.str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png'); ?>
             </div>
-            &nbsp;
-        </dd>
-	</dl>
+            <div class="col-md-4">
+                <div>
+                    <h1><?php echo h($hero['Hero']['name']); ?></h1>
+                </div>
+                <div>
+                    <?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?>
+                </div>
+                <div>
+                    <?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?>
+                </div>
+                <div>
+                    <div class="bestRol">
+                        <?php for($i=0;$i<3;$i++)
+                            echo $topHeroRoles[$i]['Role']['name']." ";
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container table-bordered">
+        <div class="page-header">
+            <h3>Roles</h3>
+        </div>
+        <?php foreach ($topHeroRoles as $rolesHero): ?>
+        <div class="row">
+            <div class="col-md-2"><?php echo $rolesHero['Role']['name']; ?></div>
+            <div class="col-md-3">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $rolesHero['RolesHero']['level']; ?>" aria-valuemin="0" aria-valuemax="10" style="width:<?php echo $rolesHero['RolesHero']['level']*10; ?>%">
+                        <span class="sr-only"><?php echo $rolesHero['RolesHero']['level']; ?>% Complete (success)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
@@ -61,34 +58,6 @@
 		<li><?php echo $this->Html->link(__('List Users Heros'), array('controller' => 'users_heros', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Users Hero'), array('controller' => 'users_heros', 'action' => 'add')); ?> </li>
 	</ul>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-2 table-bordered">
-            <?php echo h($hero['Hero']['image']); ?>
-        </div>
-        <div class="col-md-4 table-bordered">
-            <div>
-                <h5>HERO</h5>
-            </div>
-            <div>
-                <h1><?php echo h($hero['Hero']['name']); ?></h1>
-            </div>
-            <div>
-                <?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?>
-            </div>
-            <div>
-                <?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?>
-            </div>
-            <div>
-                <div class="bestRol">
-                    <?php for($i=0;$i<3;$i++)
-                        echo $topHeroRoles[$i]['Role']['name']." ";
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <div class="related">
 	<h3><?php echo __('Related Roles Heros'); ?></h3>
