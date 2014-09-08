@@ -3,3 +3,10 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+.bestRol{
+    font-size: 15px;
+    text-transform: uppercase;
+    background-color: #52bdff;
+    text-align: center;
+    font-weight: bold;
+}

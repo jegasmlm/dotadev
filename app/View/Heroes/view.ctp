@@ -62,6 +62,34 @@
 		<li><?php echo $this->Html->link(__('New Users Hero'), array('controller' => 'users_heros', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 table-bordered">
+            <?php echo h($hero['Hero']['image']); ?>
+        </div>
+        <div class="col-md-4 table-bordered">
+            <div>
+                <h5>HERO</h5>
+            </div>
+            <div>
+                <h1><?php echo h($hero['Hero']['name']); ?></h1>
+            </div>
+            <div>
+                <?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?>
+            </div>
+            <div>
+                <?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?>
+            </div>
+            <div>
+                <div class="bestRol">
+                    <?php for($i=0;$i<3;$i++)
+                        echo $topHeroRoles[$i]['Role']['name']." ";
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="related">
 	<h3><?php echo __('Related Roles Heros'); ?></h3>
 	<?php if (!empty($topHeroRoles['RolesHero'])): ?>
