@@ -69,4 +69,8 @@ class RolesHero extends AppModel {
 			'order' => ''
 		)
 	);
+
+    public function getTopRolesByHeroId($id){
+        return $this->find('all', array('conditions' => array('RolesHero.hero_id' => $id), 'order' => array('RolesHero.level' => 'desc')));
+    }
 }

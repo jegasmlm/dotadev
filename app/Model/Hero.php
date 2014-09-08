@@ -112,7 +112,15 @@ class Hero extends AppModel {
  * @return array
  */
     public function view($id){
-        $options = array('conditions' => array('Hero.' . $this->primaryKey => $id), 'contains' => array('Hero', 'RolesHero', 'Role'), 'recursive' => 2);
+        $options = array('conditions' => array('Hero.' . $this->primaryKey => $id), 'recursive' => 2);
         return $this->find('first', $options);
+    }
+
+    public function getTopRoles($id){
+        return $this->RolesHero->getTopRolesByHeroId($id);
+    }
+
+    public function getTopRolesTest($id){
+        return $this->find();
     }
 }
