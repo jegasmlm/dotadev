@@ -1,5 +1,5 @@
 <div class="heroes view">
-<h2><?php echo __('Hero'); ?></h2>
+<h1><?php echo __('Hero'); ?></h1>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -36,6 +36,13 @@
 			<?php echo h($hero['Hero']['modified']); ?>
 			&nbsp;
 		</dd>
+        <dt><?php echo __('Rol'); ?></dt>
+        <dd>
+            <div class="bestRol">
+                Disabler - Initiator - Nuker
+            </div>
+            &nbsp;
+        </dd>
 	</dl>
 </div>
 <div class="actions">
