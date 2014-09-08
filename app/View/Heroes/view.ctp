@@ -23,7 +23,7 @@
 		</dd>
 		<dt><?php echo __('Image'); ?></dt>
 		<dd>
-			<?php echo h($hero['Hero']['image']); ?>
+			<?php echo $this->Html->image('http://cdn.dota2.com/apps/dota2/images/heroes/'.str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png'); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
@@ -57,7 +57,7 @@
 </div>
 <div class="related">
 	<h3><?php echo __('Related Roles Heros'); ?></h3>
-	<?php if (!empty($topHeroRoles['RolesHero'])): ?>
+	<?php if (!empty($topHeroRoles)): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>

@@ -106,6 +106,16 @@ class Hero extends AppModel {
 		)
 	);
 
+    public $hasAndBelongsToMany = array(
+        'Counter' => array(
+            'className' => 'Hero',
+            'joinTable' => 'heroes_counters',
+            'foreignKey' => 'hero_id',
+            'associationForeignKey' => 'counter_id',
+            'unique' => true,
+        )
+    );
+
 /**
  * Funtion to get the hero with role name
  * @param $id
@@ -121,6 +131,7 @@ class Hero extends AppModel {
     }
 
     public function getTopRolesTest($id){
-        return $this->find();
+        return $this->RolesHero->find('all', array('conditions' => array('RolesHero.hero_id' => $id), 'order' => array('RolesHero.level' => 'desc')));
     }
+
 }

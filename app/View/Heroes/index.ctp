@@ -24,7 +24,7 @@
 		<td>
 			<?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?>
 		</td>
-		<td><?php echo h($hero['Hero']['image']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->image('http://cdn.dota2.com/apps/dota2/images/heroes/'.str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png'); ?>&nbsp;</td>
 		<td><?php echo h($hero['Hero']['created']); ?>&nbsp;</td>
 		<td><?php echo h($hero['Hero']['modified']); ?>&nbsp;</td>
 		<td class="actions">
