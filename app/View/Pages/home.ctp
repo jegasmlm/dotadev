@@ -11,7 +11,7 @@
         <div class="col-lg-2">
             <h3><?php echo __('Actions'); ?></h3>
             <ul>
-                <li><?php echo $this->Html->link(__('List Heroes'), array('action' => 'index')); ?> </li>
+                <li><?php echo $this->Html->link(__('List Heroes'), array('controller' => 'heroes', 'action' => 'index')); ?> </li>
                 <li><?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index')); ?> </li>
                 <li><?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index')); ?> </li>
                 <li><?php echo $this->Html->link(__('List Roles Heros'), array('controller' => 'roles_heros', 'action' => 'index')); ?> </li>
