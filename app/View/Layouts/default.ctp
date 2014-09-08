@@ -14,7 +14,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = __d('cake_dev', 'Dota 2 Team Pick Tool');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
+
         //echo $this->Html->css(array('bootstrap-theme','cake.generic','styles'));
+
+		echo $this->Html->css('dota');
+
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -39,7 +43,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+			<h1><?php echo $this->Html->link($cakeDescription, 'http://dseta.com/dota/heroes'); ?></h1>
 		</div>
 		<div id="content">
 

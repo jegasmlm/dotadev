@@ -70,7 +70,7 @@
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Role Id'); ?></th>
 		<th><?php echo __('Hero Id'); ?></th>
-        <th><?php echo __('Level'); ?></th>
+		<th><?php echo __('Level'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
@@ -80,7 +80,7 @@
 			<td><?php echo $rolesHero['RolesHero']['id']; ?></td>
 			<td><?php echo $rolesHero['Role']['name']; ?></td>
 			<td><?php echo $hero['Hero']['name']; ?></td>
-            <td><?php echo $rolesHero['RolesHero']['level']; ?></td>
+			<td><?php echo $rolesHero['RolesHero']['level']; ?></td>
 			<td><?php echo $rolesHero['RolesHero']['created']; ?></td>
 			<td><?php echo $rolesHero['RolesHero']['modified']; ?></td>
 			<td class="actions">
