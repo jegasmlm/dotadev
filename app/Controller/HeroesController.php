@@ -4,6 +4,7 @@ App::uses('AppController', 'Controller');
  * Heroes Controller
  *
  * @property Hero $Hero
+ * @property RolesHero $RolesHero
  * @property PaginatorComponent $Paginator
  */
 class HeroesController extends AppController {
@@ -37,7 +38,7 @@ class HeroesController extends AppController {
 			throw new NotFoundException(__('Invalid hero'));
 		}
 		//$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
-        $this->set('hero', $this->Hero->view($id));
+        $this->set(array('hero' => $this->Hero->view($id), 'topHeroRoles' => $this->Hero->getTopRoles($id)));
 	}
 
 /**

@@ -57,7 +57,7 @@
 </div>
 <div class="related">
 	<h3><?php echo __('Related Roles Heros'); ?></h3>
-	<?php if (!empty($hero['RolesHero'])): ?>
+	<?php if (!empty($topHeroRoles['RolesHero'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
@@ -68,18 +68,18 @@
 		<th><?php echo __('Modified'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
-	<?php foreach ($hero['RolesHero'] as $rolesHero): ?>
+	<?php foreach ($topHeroRoles as $rolesHero): ?>
 		<tr>
-			<td><?php echo $rolesHero['id']; ?></td>
+			<td><?php echo $rolesHero['RolesHero']['id']; ?></td>
 			<td><?php echo $rolesHero['Role']['name']; ?></td>
 			<td><?php echo $hero['Hero']['name']; ?></td>
-            <td><?php echo $rolesHero['level']; ?></td>
-			<td><?php echo $rolesHero['created']; ?></td>
-			<td><?php echo $rolesHero['modified']; ?></td>
+            <td><?php echo $rolesHero['RolesHero']['level']; ?></td>
+			<td><?php echo $rolesHero['RolesHero']['created']; ?></td>
+			<td><?php echo $rolesHero['RolesHero']['modified']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'roles_heros', 'action' => 'view', $rolesHero['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'roles_heros', 'action' => 'edit', $rolesHero['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'roles_heros', 'action' => 'delete', $rolesHero['id']), array(), __('Are you sure you want to delete # %s?', $rolesHero['id'])); ?>
+				<?php echo $this->Html->link(__('View'), array('controller' => 'roles_heros', 'action' => 'view', $rolesHero['RolesHero']['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'roles_heros', 'action' => 'edit', $rolesHero['RolesHero']['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'roles_heros', 'action' => 'delete', $rolesHero['RolesHero']['id']), array(), __('Are you sure you want to delete # %s?', $rolesHero['RolesHero']['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
