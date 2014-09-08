@@ -70,6 +70,12 @@ class RolesHero extends AppModel {
 		)
 	);
 
+/**
+* Obtain the roles of the hero organized from 10 to 0
+*
+* @param int $id Id of hero
+* @return Hero
+*/
     public function getTopRolesByHeroId($id){
         return $this->find('all', array('conditions' => array('RolesHero.hero_id' => $id), 'order' => array('RolesHero.level' => 'desc')));
     }

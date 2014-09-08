@@ -37,8 +37,10 @@ class HeroesController extends AppController {
 		if (!$this->Hero->exists($id)) {
 			throw new NotFoundException(__('Invalid hero'));
 		}
-		//$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
-        $this->set(array('hero' => $this->Hero->view($id), 'topHeroRoles' => $this->Hero->getTopRoles($id)));
+        	$this->set(array(
+				'hero' => $this->Hero->view($id), 
+				'topHeroRoles' => $this->Hero->getTopRoles($id),
+				));
 	}
 
 /**
