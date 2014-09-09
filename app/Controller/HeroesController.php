@@ -24,12 +24,6 @@ class HeroesController extends AppController {
 	public function index() {
 		$this->Hero->recursive = 0;
 
-        //debug(__DIR__);
-
-        $this->Hero->downloadImagesfromDotaServer();
-
-        $this->set('debug', $this->Hero->getRandomTeamByStrategy(1));
-
 		$this->set('heroes', $this->Paginator->paginate());
 	}
 
