@@ -23,6 +23,7 @@ class StrategiesRolesController extends AppController {
 	public function index() {
 		$this->StrategiesRole->recursive = 0;
 		$this->set('strategiesRoles', $this->Paginator->paginate());
+        $this->StrategiesRole->getRoles(0);
 	}
 
 /**
@@ -49,7 +50,7 @@ class StrategiesRolesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->StrategiesRole->create();
 			if ($this->StrategiesRole->save($this->request->data)) {
-				$this->Session->setFlash(__('The strategies role has been saved.'));
+				//$this->Session->setFlash(__('The strategies role has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The strategies role could not be saved. Please, try again.'));
@@ -101,10 +102,12 @@ class StrategiesRolesController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->StrategiesRole->delete()) {
-			$this->Session->setFlash(__('The strategies role has been deleted.'));
+			//$this->Session->setFlash(__('The strategies role has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The strategies role could not be deleted. Please, try again.'));
+			//$this->Session->setFlash(__('The strategies role could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+
 }
