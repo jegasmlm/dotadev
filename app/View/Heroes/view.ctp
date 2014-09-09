@@ -1,7 +1,7 @@
 <div class="heroes view">
     <div>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <?php echo $this->Html->image('http://cdn.dota2.com/apps/dota2/images/heroes/'.str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png'); ?>
             </div>
             <div class="col-md-4">
@@ -16,9 +16,11 @@
                 </div>
                 <div>
                     <div class="bestRol">
+                        <h3>
                         <?php for($i=0;$i<3;$i++)
                             echo $topHeroRoles[$i]['Role']['name']." ";
                         ?>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -28,18 +30,26 @@
         <div class="page-header">
             <h3>Roles</h3>
         </div>
-        <?php foreach ($topHeroRoles as $rolesHero): ?>
+        <?php foreach ($hero['RolesHero'] as $rolesHero):
+            $level = $rolesHero['level'];
+            if($level < 4)
+                $bar = "progress-bar-danger";
+            elseif($level >4 && $level <8)
+                $bar = "progress-bar-warning";
+            else
+                $bar = "progress-bar-success";
+            ?>
         <div class="row">
             <div class="col-md-2"><?php echo $rolesHero['Role']['name']; ?></div>
             <div class="col-md-3">
                 <div class="progress">
-                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $rolesHero['RolesHero']['level']; ?>" aria-valuemin="0" aria-valuemax="10" style="width:<?php echo $rolesHero['RolesHero']['level']*10; ?>%">
-                        <span class="sr-only"><?php echo $rolesHero['RolesHero']['level']; ?>% Complete (success)</span>
+                    <div class="progress-bar <?php echo $bar; ?> role="progressbar" aria-valuenow="<?php echo $level; ?>" aria-valuemin="0" aria-valuemax="10" style="width:<?php echo $level*10; ?>%">
+                        <span class="sr-only"><?php echo $level; ?>% Complete (success)</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-1">
-                <button type="button" class="btn btn-xs btn-default"><?php echo $this->Html->link(__('Edit'), array('controller' => 'roles_heros', 'action' => 'edit', $rolesHero['RolesHero']['id'])); ?></button>
+                <button type="button" class="btn btn-xs btn-default"><?php echo $this->Html->link(__('Edit'), array('controller' => 'roles_heros', 'action' => 'edit', $rolesHero['id'])); ?></button>
             </div>
         </div>
         <?php endforeach; ?>
