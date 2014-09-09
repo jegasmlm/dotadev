@@ -79,4 +79,33 @@ class RolesHero extends AppModel {
     public function getTopRolesByHeroId($id){
         return $this->find('all', array('conditions' => array('RolesHero.hero_id' => $id), 'order' => array('RolesHero.level' => 'desc')));
     }
+
+    public function getRandomTeamByStrategy($id)
+    {
+        $roles = $this->Role->getRolesByStrategy($id);
+        $heroesByRole = array();
+        for ($i = 0; $i < 5; $i++) {
+            $heroesByRole[$i] = $this->find('all', array('conditions' => array('role_id' => $roles[$i]['Role']['id'], 'level >=' => 5), 'order' => 'rand()'));
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $string = "";
+            for ($j = 0; $j < count($heroesByRole[$i]); $j++) {
+                $string .= $heroesByRole[$i][$j]['Hero']['name'] ." ". $heroesByRole[$i][$j]['Role']['name'] ." ". $heroesByRole[$i][$j]['RolesHero']['level']."'\n'";
+            }
+            debug($string);
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $team[$i] = $heroesByRole[$i][0];
+            //debug($team[$i]['Hero']['name'].' '.$team[$i]['Role']['name'].' '.$team[$i]['RolesHero']['level']);
+        }
+
+        return $team;
+    }
+
+
+    public function getRandomBalanceTeam($id)
+    {
+    }
 }

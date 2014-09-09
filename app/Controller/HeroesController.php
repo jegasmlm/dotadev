@@ -23,6 +23,13 @@ class HeroesController extends AppController {
  */
 	public function index() {
 		$this->Hero->recursive = 0;
+
+        //debug(__DIR__);
+
+        $this->Hero->downloadImagesfromDotaServer();
+
+        $this->set('debug', $this->Hero->getRandomTeamByStrategy(1));
+
 		$this->set('heroes', $this->Paginator->paginate());
 	}
 
@@ -39,7 +46,6 @@ class HeroesController extends AppController {
 		}
 		//$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
         $this->set(array('hero' => $this->Hero->view($id), 'topHeroRoles' => $this->Hero->getTopRolesTest($id)));
-
  /*       	$this->set(array(
 				'hero' => $this->Hero->view($id), 
 				'topHeroRoles' => $this->Hero->getTopRoles($id),
@@ -63,6 +69,7 @@ class HeroesController extends AppController {
 		}
 		$sides = $this->Hero->Side->find('list');
 		$groups = $this->Hero->Group->find('list');
+
 		$this->set(compact('sides', 'groups'));
 	}
 

@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * Role Model
  *
  * @property Strategy $Strategy
+ * @property StrategiesRole $StrategiesRole
  */
 class Role extends AppModel {
 
@@ -15,7 +16,22 @@ class Role extends AppModel {
  *
  * @var array
  */
-	public $hasAndBelongsToMany = array(
+    public $hasMany = array(
+        'StrategiesRole' => array(
+            'className' => 'StrategiesRole',
+            'foreignKey' => 'role_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
+        )
+    );
+	/*public $hasAndBelongsToMany = array(
 		'Strategy' => array(
 			'className' => 'Strategy',
 			'joinTable' => 'strategies_roles',
@@ -29,6 +45,10 @@ class Role extends AppModel {
 			'offset' => '',
 			'finderQuery' => '',
 		)
-	);
+	);*/
+
+    public function getRolesByStrategy($id){
+        return $this->StrategiesRole->find('all', array('condition' => array('StrategiesRole.role_id' => $id)));
+    }
 
 }
