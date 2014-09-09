@@ -152,4 +152,16 @@ class Hero extends AppModel {
     public function getRandomTeamByStrategy($id){
         return $this->RolesHero->getRandomTeamByStrategy($id);
     }
+
+    public function getHeroByGroup($group_id){
+
+    }
+
+    public function getHeroBySide($side_id){
+
+    }
+
+    public function getHeroByGroupAndSide($group_id, $side_id){
+        return $this->find('all', array('conditions' => array('Hero.group_id' => $group_id, 'Hero.side_id' => $side_id), 'recursive' => -1));
+    }
 }
