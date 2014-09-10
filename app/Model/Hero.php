@@ -135,7 +135,7 @@ class Hero extends AppModel {
     }
 
     public function getRandomTeam(){
-        $heroes = $this->find('all');
+        $heroes = $this->find('all', array('recursive' => 2));
         //$rand = rand(0, count($heroes)-1);
         //debug($rand);
         return array($heroes[rand(0, count($heroes)-1)],

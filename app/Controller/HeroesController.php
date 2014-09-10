@@ -125,4 +125,8 @@ class HeroesController extends AppController {
         $this->set('RadiantAgi', $this->Hero->getHeroByGroupAndSide(2, 1));
         $this->set('RadiantInt', $this->Hero->getHeroByGroupAndSide(3, 1));
     }
+
+    public function randomTeam(){
+        $this->set('randomTeam', $this->Hero->getRandomTeam());
+    }
 }

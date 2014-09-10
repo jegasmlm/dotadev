@@ -103,9 +103,4 @@ class RolesHero extends AppModel {
 
         return $team;
     }
-
-
-    public function getRandomBalanceTeam($id)
-    {
-    }
 }
