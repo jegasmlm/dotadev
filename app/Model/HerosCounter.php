@@ -6,7 +6,7 @@ App::uses('AppModel', 'Model');
  * @property Hero $Hero
  * @property Counter $Counter
  */
-class HeroesCounter extends AppModel {
+class HerosCounter extends AppModel {
 
 /**
  * Validation rules

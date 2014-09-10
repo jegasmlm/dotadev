@@ -87,7 +87,9 @@ Cache::config('default', array('engine' => 'File'));
  *
  * ));
  */
+
 CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
+CakePlugin::load('Migrations');
 
 Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',

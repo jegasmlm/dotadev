@@ -106,16 +106,6 @@ class Hero extends AppModel {
 		)
 	);
 
-    public $hasAndBelongsToMany = array(
-        'Counter' => array(
-            'className' => 'Hero',
-            'joinTable' => 'heroes_counters',
-            'foreignKey' => 'hero_id',
-            'associationForeignKey' => 'counter_id',
-            'unique' => true,
-        )
-    );
-
 /**
  * Funtion to get the hero with role name
  * @param $id

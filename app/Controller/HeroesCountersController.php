@@ -1,9 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * HeroesCounters Controller
+ * HerosCounters Controller
  *
- * @property HeroesCounter $HeroesCounter
+ * @property HerosCounter $HerosCounter
  * @property PaginatorComponent $Paginator
  */
 class HeroesCountersController extends AppController {
