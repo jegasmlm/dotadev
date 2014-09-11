@@ -21,13 +21,26 @@ class HeroesController extends AppController {
  *
  * @return void
  */
-	public function index() {
-		$this->Hero->recursive = 0;
+	public function index($filterString=null)
+    {
+        $this->Hero->recursive = 0;
 
-        //debug($this->Hero->getRandomTeam());
-
-		$this->set('heroes', $this->Paginator->paginate());
+        if ($this->request->is('post'))
+        $this->set('heroes', $this->Paginator->paginate('Hero', array('Hero.name LIKE' => "%".$this->request->data['Heroes']['busqueda']."%")));
+        else
+            $this->set('heroes', $this->Paginator->paginate());
+        $this->render('index');
 	}
+
+    public function search($filterString=null) {
+        $this ->Hero->recursive = 0;
+
+        if($filterString != null)
+            $this->set('heroes', $this->Paginator->paginate('Hero', array('Hero.name LIKE' => "%$filterString%")));
+        else
+            $this->set('heroes', $this->Paginator->paginate());
+        $this->render('index');
+    }
 
 /**
  * view method
