@@ -10,17 +10,21 @@
                     <div>
                         <h2>Strength</h2>
                     </div>
-                    <div><h1>Radiant</h1></div>
                     <div>
-                    <?php foreach($RadiantStr as $Hero):
-                        echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));
-                    endforeach; ?>
+                    <?php foreach($RadiantStr as $Hero):?>
+                        <div class="borderThumnail col-xs-2">
+                            <?php echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));?>
+                        </div>
+                    <?php endforeach; ?>
                     </div>
-                    <div><h1>Dire</h1></div>
+                </div>
+                <div class="row">
                     <div>
-                        <?php foreach($DireStr as $Hero):
-                            echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));
-                        endforeach; ?>
+                        <?php foreach($DireStr as $Hero):?>
+                        <div class="borderThumnail col-xs-3">
+                            <?php echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));?>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
