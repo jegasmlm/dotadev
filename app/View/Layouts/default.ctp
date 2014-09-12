@@ -14,25 +14,26 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+$title_for_layout = "Dota 2 Team Maker";
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
+    <link rel="icon shortcut" type="image/png" href="<?php echo $this->webroot ?>img/ask-logo.png">
 	<title>
-		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
-		echo $this->Html->meta('icon');
+		//echo $this->Html->meta('icon');
 
 		//echo $this->Html->css('cake.generic');
         echo $this->Html->css("bootstrap");
 		echo $this->Html->css('dota');
 
 
-		echo $this->fetch('meta');
+		//echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
@@ -57,7 +58,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search">
                             </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default">Search</button>
                         </form>
                     </div>
                 </div>

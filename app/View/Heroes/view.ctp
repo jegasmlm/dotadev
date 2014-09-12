@@ -23,7 +23,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
-                    <?php echo $this->Html->image('http://cdn.dota2.com/apps/dota2/images/heroes/'.str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png'); ?>
+                    <?php echo $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png'); ?>
                 </div>
                 <div class="col-md-4">
                     <div>

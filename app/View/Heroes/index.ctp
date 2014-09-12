@@ -20,51 +20,44 @@
         </div>
     </div>
 </div>
-<div class="col-lg-10">
-    <div class="heroes index">
-        <h2><?php echo __('Heroes'); ?></h2>
-        <table cellpadding="0" cellspacing="0">
+<div class="col-lg-8">
+<div class="panel panel-default">
+    <!-- Default Panel Contents -->
+    <div class="panel-heading"><h2><?php echo __('Heroes'); ?></h2></div>
+    <table class="table">
         <thead>
-        <tr>
+            <tr>
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('side_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('group_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('image'); ?></th>
-                <th><?php echo $this->Paginator->sort('created'); ?></th>
-                <th><?php echo $this->Paginator->sort('modified'); ?></th>
-                <th class="actions"><?php echo __('Actions'); ?></th>
-        </tr>
+                <th>Actions</th>
+            </tr>
         </thead>
         <tbody>
-        <?php foreach ($heroes as $hero): ?>
-        <tr>
-            <td><?php echo h($hero['Hero']['id']); ?>&nbsp;</td>
-            <td><?php echo h($hero['Hero']['name']); ?>&nbsp;</td>
-            <td>
-                <?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?>
-            </td>
-            <td>
-                <?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?>
-            </td>
-            <td><?php echo $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png',array('class' => 'heroeThumbnail')); ?>&nbsp;</td>
-            <td><?php echo h($hero['Hero']['created']); ?>&nbsp;</td>
-            <td><?php echo h($hero['Hero']['modified']); ?>&nbsp;</td>
-            <td class="actions">
-                <?php echo $this->Html->link(__('View'), array('action' => 'view', $hero['Hero']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $hero['Hero']['id'])); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $hero['Hero']['id']), array(), __('Are you sure you want to delete # %s?', $hero['Hero']['id'])); ?>
-            </td>
-        </tr>
-    <?php endforeach; ?>
+            <?php foreach ($heroes as $hero): ?>
+            <tr>
+                <td><?php echo h($hero['Hero']['id']); ?></td>
+                <td><?php echo h($hero['Hero']['name']); ?></td>
+                <td><?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?></td>
+                <td><?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?></td>
+                <td><?php echo $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png',array('class' => 'heroeThumbnail')); ?></td>
+                <td>
+                    <?php echo $this->Html->link(__('View'), array('action' => 'view', $hero['Hero']['id']), array('class'=>'btn btn-default btn-xs')); ?>
+                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $hero['Hero']['id']), array('class'=>'btn btn-default btn-xs')); ?>
+                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $hero['Hero']['id']), array('class'=>'btn btn-default btn-xs'), array(), __('Are you sure you want to delete # %s?', $hero['Hero']['id'])); ?>
+                </td>
+            </tr>
         </tbody>
-        </table>
-        <div>
-            <ul class="pagination">
-                <li><?php echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));?></li>
-                <li><?php echo $this->Paginator->numbers(array('separator' => ''));?></li>
-                <li><?php echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));?></li>
-            </ul>
-        </div>
+        <?php endforeach; ?>
+    </table>
+    <div>
+        <ul class="pagination">
+            <li><?php echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));?></li>
+            <li><?php echo $this->Paginator->numbers(array('separator' => ''));?></li>
+            <li><?php echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));?></li>
+        </ul>
+    </div>
     </div>
 </div>
