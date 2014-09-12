@@ -139,7 +139,7 @@ class Hero extends AppModel {
         }
 
         for($i=0; $i<5; $i++){
-            $heroes[$i] = $this->RolesHero->find('all', array('conditions' => array('RolesHero.hero_id' => $randId[$i]), 'order' => array('RolesHero.role_id' => 'asc')));
+            $heroes[$randId[$i]]['Roles'] = $this->RolesHero->getRolesHero($heroes[$randId[$i]]['Hero']['id']);
         }
 
         return $heroes;
