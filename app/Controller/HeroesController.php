@@ -135,6 +135,7 @@ class HeroesController extends AppController {
     }
 
     public function randomTeam(){
+        //$this->set('roles', $this->RolesHero->Role->getRoles());
         $this->set('randomTeam', $this->Hero->getRandomTeam());
     }
 }

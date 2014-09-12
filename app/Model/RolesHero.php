@@ -77,7 +77,8 @@ class RolesHero extends AppModel {
 * @return Hero
 */
     public function getRolesHero($hero_id){
-        return $this->find('all', array('conditions'=>array('RolesHero.hero_id'=>$hero_id), 'order'=>array('RolesHero.role_id'=>'asc'), 'recursive'=>-1));
+        $this->recursive=-1;
+        return $this->find('all', array('conditions'=>array('RolesHero.hero_id'=>$hero_id), 'order'=>array('RolesHero.role_id'=>'asc')));
     }
 
     public function getTopRolesByHeroId($id){
@@ -102,7 +103,6 @@ class RolesHero extends AppModel {
 
         for ($i = 0; $i < 5; $i++) {
             $team[$i] = $heroesByRole[$i][0];
-            //debug($team[$i]['Hero']['name'].' '.$team[$i]['Role']['name'].' '.$team[$i]['RolesHero']['level']);
         }
 
         return $team;

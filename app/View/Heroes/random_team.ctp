@@ -9,7 +9,7 @@
             <?php echo  $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png');
             for($i=0; $i<10;$i++){
                 $roles[$i]['name'] = 'test';
-                $roles[$i]['level'] += $hero['RolesHero'][$i]['RolesHero']['level'];
+                $roles[$i]['level'] += $hero['Roles'][$i]['RolesHero']['level'];
             }
             ?>&nbsp;
         </td>
