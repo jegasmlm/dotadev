@@ -50,9 +50,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     </div>
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active">
-                                <?php echo $this->Html->link('Heroes', array('controller'=>'Heroes', 'action'=>'index'), array('class'=>'navbar-brand')); ?>
-                            </li>
+                            <li><?php echo $this->Html->link('Heroes', array('controller'=>'Heroes', 'action'=>'index'), array('class'=>'navbar-brand')); ?></li>
+                            <li><?php echo $this->Html->link('Sides', array('controller'=>'Sides', 'action'=>'index'), array('class'=>'navbar-brand')); ?></li>
+                            <li><?php echo $this->Html->link('Groups', array('controller'=>'Groups', 'action'=>'index'), array('class'=>'navbar-brand')); ?></li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search">
                             <div class="form-group">
