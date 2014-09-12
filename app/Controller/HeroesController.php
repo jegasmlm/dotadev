@@ -4,7 +4,6 @@ App::uses('AppController', 'Controller');
  * Heroes Controller
  *
  * @property Hero $Hero
- * @property RolesHero $RolesHero
  * @property PaginatorComponent $Paginator
  */
 class HeroesController extends AppController {
@@ -135,7 +134,8 @@ class HeroesController extends AppController {
     }
 
     public function randomTeam(){
-        //$this->set('roles', $this->RolesHero->Role->getRoles());
-        $this->set('randomTeam', $this->Hero->getRandomTeam());
+        $heroes = $this->Hero->getRandomTeam();
+        $this->set('randomTeam', $heroes);
+        $this->set('rolesAvg', $this->Hero->RolesHero->getAverageLevelsPerRole($heroes));
     }
 }

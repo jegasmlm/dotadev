@@ -107,4 +107,28 @@ class RolesHero extends AppModel {
 
         return $team;
     }
+
+    public function getAverageLevelsPerRole($heroes){
+        $this->recursive=-1;
+        $roles = $this->Role->getRoles();
+
+        for($i=0; $i<count($heroes); $i++){
+            $heroesId[$i] = $heroes[$i]['Hero']['id'];
+        }
+
+        //$max=0;
+
+        $this->virtualFields = array('total'=>'SUM(RolesHero.level)');
+
+        for($i=0; $i<count($roles); $i++){
+            $roles[$i]['Role']['avgLevel'] = $this->find('all', array('fields'=>array('total'), 'conditions' => array('RolesHero.hero_id'=>$heroesId, 'RolesHero.role_id'=>$roles[$i]['Role']['id'])))[0]['RolesHero']['total'];
+            //if($max < $roles[$i]['Role']['avgLevel']) $max = $roles[$i]['Role']['avgLevel'];
+        }
+
+        for($i=0; $i<count($roles); $i++){
+            $roles[$i]['Role']['avgLevel'] = ($roles[$i]['Role']['avgLevel']/50)*100;
+        }
+
+        return $roles;
+    }
 }
