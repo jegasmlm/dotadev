@@ -125,12 +125,13 @@ class Hero extends AppModel {
     }
 
     public function getRandomTeam(){
-        $totalHeroes = $this->find('count');
+        $this->recursive= -1;
+        $heroes = $this->find('all');
 
         $randId = array(0, 0, 0, 0, 0);
 
         for($i=0; $i<5; $i++){
-            $rand = rand(0, $totalHeroes-$i-1);
+            $rand = rand(0, count($heroes));
             for($j=0; $j<$i; $j++){
                 if($rand >= $randId[$j])
                     $rand++;
@@ -142,7 +143,7 @@ class Hero extends AppModel {
             $heroes[$randId[$i]]['Roles'] = $this->RolesHero->getRolesHero($heroes[$randId[$i]]['Hero']['id']);
         }
 
-        return $heroes;
+        return array($heroes[$randId[0]], $heroes[$randId[1]], $heroes[$randId[2]], $heroes[$randId[3]], $heroes[$randId[4]]);
     }
 
     public function getRandomHeroeByRole($role_id){

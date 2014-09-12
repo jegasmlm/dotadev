@@ -43,12 +43,25 @@
 .centerText{
     text-align: center;
 }
-.strTEXT{
+.StrengthText{
     color: #E6B800;
 }
-.agiTEXT{
+.AgilityText{
     color: #00aa00;
 }
 .intTEXT{
     color: #28a4c9;
+}
+.radiantText{
+    color: #00aa00;
+}
+.direText{
+    color: firebrick;
+}
+.randomTeamThumbnail{
+    width: 130px;
+    height: 80px;
+    border-width: 2px;
+    border-style: ridge;
+    border-color: #101010;
 }

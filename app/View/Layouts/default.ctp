@@ -53,7 +53,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                 <?php echo $this->Html->link('Heroes', array('controller'=>'Heroes', 'action'=>'index'), array('class'=>'navbar-brand')); ?>
                             </li>
                         </ul>
-                        <form class="navbar-form navbar-left" role="search">
+                        <form class="navbar-form navbar-right" role="search">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search">
                             </div>
