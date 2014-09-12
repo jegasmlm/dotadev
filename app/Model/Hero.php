@@ -152,6 +152,17 @@ class Hero extends AppModel {
     }
 
     public function getHeroByGroupAndSide($group_id, $side_id){
-        return $this->find('all', array('conditions' => array('Hero.group_id' => $group_id, 'Hero.side_id' => $side_id), 'recursive' => -1));
+        return $this->find('all', array('conditions' => array('Hero.group_id' => $group_id, 'Hero.side_id' => $side_id)));
+    }
+    public function getHeroOrderedByGroups(){
+        $heroes['radiant']['RadiantStr'] = $this->getHeroByGroupAndSide(1,1);
+        $heroes['radiant']['RadiantAgi'] = $this->getHeroByGroupAndSide(2,1);
+        $heroes['radiant']['RadiantInt'] = $this->getHeroByGroupAndSide(3,1);
+
+        $heroes['dire']['DireStr'] = $this->getHeroByGroupAndSide(1,2);
+        $heroes['dire']['DireAgi'] = $this->getHeroByGroupAndSide(2,2);
+        $heroes['dire']['DireInt'] = $this->getHeroByGroupAndSide(3,2);
+
+        return $heroes;
     }
 }

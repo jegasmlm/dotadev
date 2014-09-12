@@ -131,12 +131,7 @@ class HeroesController extends AppController {
 	}
 
     public function home(){
-        $this->set('DireStr', $this->Hero->getHeroByGroupAndSide(1, 2));
-        $this->set('DireAgi', $this->Hero->getHeroByGroupAndSide(2, 2));
-        $this->set('DireInt', $this->Hero->getHeroByGroupAndSide(3, 2));
-        $this->set('RadiantStr', $this->Hero->getHeroByGroupAndSide(1, 1));
-        $this->set('RadiantAgi', $this->Hero->getHeroByGroupAndSide(2, 1));
-        $this->set('RadiantInt', $this->Hero->getHeroByGroupAndSide(3, 1));
+        $this->set('heroes', $this->Hero->getHeroOrderedByGroups());
     }
 
     public function randomTeam(){

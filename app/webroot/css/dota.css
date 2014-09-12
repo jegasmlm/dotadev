@@ -1,7 +1,16 @@
+#body{
+    background-color: #6A6A6A;
+}
 #header h1 {
-    background: url('../img/ask-logo.png');
+    /*background: url('../img/ask-logo.png');*/
     background-size: contain;
     background-repeat: no-repeat;
+}
+.menu{
+    font-style: normal;
+    font-size: 12px;
+    background-color: #e5e5e5;
+    height: 800px;
 }
 .bestRol{
     font-size: 15px;
@@ -10,13 +19,27 @@
     text-align: center;
     font-weight: bold;
 }
-
 .heroeThumbnail{
     width: 59px;
     height: 33px;
+    border-width: 2px;
+    border-style: ridge;
+    border-color: #101010;
+}
+.icon{
+    width: 25px;
+    height: 25px;
 }
 .borderThumnail{
-    padding-bottom: 5px;
-    border: 1px;
-    border-color: #101010;
+    width: 70px;
+    padding: 5px;
+}
+.strongTittle{
+    color: #e5e5e5;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.centerText{
+    text-align: center;
 }

@@ -1,71 +1,42 @@
 <div class="row">
-    <div class="col-lg-2 table-bordered">
-        <div>Generate Random Team</div>
-        <div>Generate Random Team from Strategy</div>
+    <div class="col-lg-2 table-bordered menu">
+        <div>
+            <h2>Options</h2>
+        </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Random Team</a>
+            <a href="#" class="list-group-item">Random Team by Strategy</a>
+            <a href="#" class="list-group-item">Compare Heroes</a>
+        </div>
     </div>
     <div class="col-lg-10">
         <div class="row">
             <div class="col-lg-4">
-                <div class="row">
-                    <div>
-                        <h2>Strength</h2>
-                    </div>
-                    <div>
-                    <?php foreach($RadiantStr as $Hero):?>
-                        <div class="borderThumnail col-xs-2">
-                            <?php echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));?>
-                        </div>
-                    <?php endforeach; ?>
-                    </div>
-                </div>
-                <div class="row">
-                    <div>
-                        <?php foreach($DireStr as $Hero):?>
-                        <div class="borderThumnail col-xs-3">
-                            <?php echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));?>
-                        </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
+                <div class="strongTittle centerText">Strength</div>
             </div>
             <div class="col-lg-4">
-                <div class="row">
-                    <div>
-                        <h2>Agility</h2>
-                    </div>
-                    <div><h1>Radiant</h1></div>
-                    <div>
-                        <?php foreach($RadiantAgi as $Hero):
-                            echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));
-                        endforeach; ?>
-                    </div>
-                    <div><h1>Dire</h1></div>
-                    <div>
-                        <?php foreach($DireAgi as $Hero):
-                            echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));
-                        endforeach; ?>
-                    </div>
-                </div>
+                <div class="strongTittle centerText">Agility</div>
             </div>
             <div class="col-lg-4">
-                <div class="row">
-                    <div>
-                        <h2>Intelillence</h2>
-                    </div>
-                    <div><h1>Radiant</h1></div>
-                    <div>
-                        <?php foreach($RadiantInt as $Hero):
-                            echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));
-                        endforeach; ?>
-                    </div>
-                    <div><h1>Dire</h1></div>
-                    <div>
-                        <?php foreach($DireInt as $Hero):
-                            echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail'));
-                        endforeach; ?>
-                    </div>
-                </div>
+                <div class="strongTittle centerText">Inteligence</div>
             </div>
         </div>
     </div>
+    <?php foreach($heroes as $side):?>
+    <div class="col-lg-10" style="padding-top: 25px">
+        <div class="row">
+            <?php foreach ($side as $HeroGRP):?>
+            <div class="col-lg-4">
+                <div>
+                <?php foreach ($HeroGRP as $Hero):?>
+                    <div class="borderThumnail col-md-2">
+                        <?php echo $this->Html->image(str_replace(' ', '_', strtolower($Hero['Hero']['name'])).'_full.png', array('class' => 'heroeThumbnail', 'url' => array('controller'=>'Heroes','action'=>'view', $Hero['Hero']['id'])));?>
+                    </div>
+                <?php endforeach;?>
+                </div>
+            </div>
+            <?php endforeach;?>
+        </div>
+    </div>
+    <?php endforeach; ?>
 </div>

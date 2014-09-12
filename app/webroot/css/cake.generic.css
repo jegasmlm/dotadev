@@ -32,7 +32,7 @@ body {
 a {
 	color: #003d4c;
 	text-decoration: underline;
-	font-weight: bold;
+	/*font-weight: bold;*/
 }
 a:hover {
 	color: #367889;

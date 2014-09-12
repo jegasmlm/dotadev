@@ -14,7 +14,6 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'Dota 2 Team Pick Tool');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
@@ -28,7 +27,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		//echo $this->Html->css('cake.generic');
         echo $this->Html->css("bootstrap");
 		echo $this->Html->css('dota');
 
@@ -38,17 +37,37 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body>
-	<div id="container">
+<body id="body">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://dseta.com/dota/heroes'); ?></h1>
-		</div>
-		<div id="content">
+            <div class="navbar navbar-inverse">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navegation</span>
+                        </button>
+                        <?php echo $this->Html->link('ASK Team Maker', '/', array('class'=>'navbar-brand')); ?>
+                    </div>
+                    <div class="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <?php echo $this->Html->link('Heroes', array('controller'=>'Heroes', 'action'=>'index'), array('class'=>'navbar-brand')); ?>
+                            </li>
+                        </ul>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div>
 
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
-	</div>
 </body>
 </html>
