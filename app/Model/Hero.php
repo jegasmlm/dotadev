@@ -125,18 +125,28 @@ class Hero extends AppModel {
     }
 
     public function getRandomTeam(){
-        $heroes = $this->find('all', array('recursive' => 2));
-        //$rand = rand(0, count($heroes)-1);
-        //debug($rand);
-        return array($heroes[rand(0, count($heroes)-1)],
-            $heroes[rand(0, count($heroes)-1)],
-            $heroes[rand(0, count($heroes)-1)],
-            $heroes[rand(0, count($heroes)-1)],
-            $heroes[rand(0, count($heroes)-1)]);
+        $heroes = $this->find('all', array('recursive' => -1));
+
+        $randId = array(0, 0, 0, 0, 0);
+
+        for($i=0; $i<5; $i++){
+            $rand = rand(0, count($heroes)-$i-1);
+            for($j=0; $j<$i; $j++){
+                if($rand >= $randId[$j])
+                    $rand++;
+            }
+            $randId[$i] = $rand;
+        }
+
+        for($i=0; $i<5; $i++){
+            $heroes[$randId[$i]]['RolesHero'] = $this->RolesHero->getRolesHero($heroes[$randId[$i]]['Hero']['id']);
+        }
+
+        return array($heroes[$randId[0]], $heroes[$randId[1]], $heroes[$randId[2]], $heroes[$randId[3]], $heroes[$randId[4]]);
     }
 
     public function getRandomHeroeByRole($role_id){
-        return $this->RolesHero->find('first', array('conditions' => array('RolesHero.role_id' => $role_id)));
+        return $this->RolesHero->find('first', array('conditions' => array('RolesHero.role_id' => $role_id), 'order' => array('RolesHero.role_id' => 'asc')));
     }
 
     public function getRandomTeamByStrategy($id){
