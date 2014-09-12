@@ -138,4 +138,12 @@ class HeroesController extends AppController {
         $this->set('randomTeam', $heroes);
         $this->set('rolesAvg', $this->Hero->RolesHero->getAverageLevelsPerRole($heroes));
     }
+
+    public function randomTeamByStrategy($strategy_id=null){
+        $roles = $this->Hero->RolesHero->Role->getRolesByStrategy(1);
+        $heroes = $this->Hero->RolesHero->getRandomTeamByRoles($roles);
+        $this->set('Strategy', $roles);
+        $this->set('randomTeam', $heroes);
+        $this->set('rolesAvg', $this->Hero->RolesHero->getAverageLevelsPerRole($heroes));
+    }
 }

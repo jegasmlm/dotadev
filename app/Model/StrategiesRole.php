@@ -59,4 +59,9 @@ class StrategiesRole extends AppModel {
 			'order' => ''
 		)
 	);
+
+    public function getRolesStrategy($id){
+        $this->recursive=-1;
+        return $this->find('all', array('conditions'=>array('StrategiesRole.strategy_id'=>$id)));
+    }
 }

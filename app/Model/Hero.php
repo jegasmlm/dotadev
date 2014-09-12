@@ -111,17 +111,14 @@ class Hero extends AppModel {
  * @param $id
  * @return array
  */
+    public function getHero($id){
+        $this->recursive=-1;
+        return $this->find('first', array('conditions'=>array('Hero.id'=>$id)));
+    }
+
     public function view($id){
         $options = array('conditions' => array('Hero.' . $this->primaryKey => $id), 'recursive' => 2);
         return $this->find('first', $options);
-    }
-
-    public function getTopRoles($id){
-        return $this->RolesHero->getTopRolesByHeroId($id);
-    }
-
-    public function getTopRolesTest($id){
-        return $this->RolesHero->find('all', array('conditions' => array('RolesHero.hero_id' => $id), 'order' => array('RolesHero.level' => 'desc')));
     }
 
     public function getRandomTeam(){
@@ -146,25 +143,18 @@ class Hero extends AppModel {
         return array($heroes[$randId[0]], $heroes[$randId[1]], $heroes[$randId[2]], $heroes[$randId[3]], $heroes[$randId[4]]);
     }
 
-    public function getRandomHeroeByRole($role_id){
-        return $this->RolesHero->find('first', array('conditions' => array('RolesHero.role_id' => $role_id), 'order' => array('RolesHero.role_id' => 'asc')));
-    }
-
-    public function getRandomTeamByStrategy($id){
-        return $this->RolesHero->getRandomTeamByStrategy($id);
-    }
-
     public function getHeroByGroup($group_id){
-
+        return $this->find('all', array('conditions' => array('Hero.group_id' => $group_id)));
     }
 
     public function getHeroBySide($side_id){
-
+        return $this->find('all', array('conditions' => array('Hero.side_id' => $side_id)));
     }
 
     public function getHeroByGroupAndSide($group_id, $side_id){
         return $this->find('all', array('conditions' => array('Hero.group_id' => $group_id, 'Hero.side_id' => $side_id)));
     }
+
     public function getHeroOrderedByGroups(){
         $heroes['radiant']['RadiantStr'] = $this->getHeroByGroupAndSide(1,1);
         $heroes['radiant']['RadiantAgi'] = $this->getHeroByGroupAndSide(2,1);

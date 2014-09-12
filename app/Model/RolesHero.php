@@ -81,28 +81,29 @@ class RolesHero extends AppModel {
         return $this->find('all', array('conditions'=>array('RolesHero.hero_id'=>$hero_id), 'order'=>array('RolesHero.role_id'=>'asc')));
     }
 
-    public function getTopRolesByHeroId($id){
+    public function getRolesHeroFromTeam($heroes_id){
+        $this->recursive=-1;
+        return $this->find('all', array('conditions'=>array('RolesHero.hero_id'=>$heroes_id), 'order'=>array('RolesHero.role_id'=>'asc')));
+    }
+
+
+    public function getTopRolesByHero($id){
         return $this->find('all', array('conditions' => array('RolesHero.hero_id' => $id), 'order' => array('RolesHero.level' => 'desc')));
     }
 
-    public function getRandomTeamByStrategy($id)
-    {
-        $roles = $this->Role->getRolesByStrategy($id);
+    public function getRandomHeroeByRole($role_id){
+        return $this->find('first', array('conditions' => array('RolesHero.role_id' => $role_id), 'order' => array('RolesHero.role_id' => 'asc')));
+    }
+
+    public function getRandomTeamByRoles($roles){
         $heroesByRole = array();
         for ($i = 0; $i < 5; $i++) {
-            $heroesByRole[$i] = $this->find('all', array('conditions' => array('role_id' => $roles[$i]['Role']['id'], 'level >=' => 5), 'order' => 'rand()'));
+            $heroesByRole[$i] = $this->find('first', array('conditions' => array('role_id' => $roles[$i]['Role']['id'], 'level >' => 5), 'order' => 'rand()', 'fields'=>'RolesHero.hero_id'))['RolesHero']['hero_id'];
         }
 
         for ($i = 0; $i < 5; $i++) {
-            $string = "";
-            for ($j = 0; $j < count($heroesByRole[$i]); $j++) {
-                $string .= $heroesByRole[$i][$j]['Hero']['name'] ." ". $heroesByRole[$i][$j]['Role']['name'] ." ". $heroesByRole[$i][$j]['RolesHero']['level']."'\n'";
-            }
-            debug($string);
-        }
-
-        for ($i = 0; $i < 5; $i++) {
-            $team[$i] = $heroesByRole[$i][0];
+            $team[$i] = $this->Hero->getHero($heroesByRole[$i]);
+            $team[$i]['Roles'] = $this->getRolesHero($heroesByRole[$i]);
         }
 
         return $team;
