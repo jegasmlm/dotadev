@@ -4,6 +4,7 @@
             <h2>Options</h2>
         </div>
         <div class="list-group">
+            <?php echo $this->Html->link('Generate Random Team', array('controller'=>'Heroes', 'action'=>'randomTeam'), array('class'=>'list-group-item')); ?>
             <a href="#" class="list-group-item">Random Team</a>
             <a href="#" class="list-group-item">Random Team by Strategy</a>
             <a href="#" class="list-group-item">Compare Heroes</a>

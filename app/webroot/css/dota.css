@@ -43,3 +43,12 @@
 .centerText{
     text-align: center;
 }
+.strTEXT{
+    color: #E6B800;
+}
+.agiTEXT{
+    color: #00aa00;
+}
+.intTEXT{
+    color: #28a4c9;
+}
