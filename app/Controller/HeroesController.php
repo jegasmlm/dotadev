@@ -53,7 +53,7 @@ class HeroesController extends AppController {
 			throw new NotFoundException(__('Invalid hero'));
 		}
 		//$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
-        $this->set(array('hero' => $this->Hero->view($id), 'topHeroRoles' => $this->Hero->getTopRolesTest($id)));
+        $this->set(array('hero' => $this->Hero->view($id), 'topHeroRoles' => $this->Hero->RolesHero->getTopRolesByHero($id)));
  /*       	$this->set(array(
 				'hero' => $this->Hero->view($id), 
 				'topHeroRoles' => $this->Hero->getTopRoles($id),
@@ -140,7 +140,7 @@ class HeroesController extends AppController {
     }
 
     public function randomTeamByStrategy($strategy_id=null){
-        $roles = $this->Hero->RolesHero->Role->getRolesByStrategy(1);
+        $roles = $this->Hero->RolesHero->Role->getRolesByStrategy(0);
         $heroes = $this->Hero->RolesHero->getRandomTeamByRoles($roles);
         $this->set('Strategy', $roles);
         $this->set('randomTeam', $heroes);

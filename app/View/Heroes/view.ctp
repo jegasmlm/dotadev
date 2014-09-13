@@ -64,7 +64,7 @@
                 <div class="col-md-6">
                     <div class="progress">
                         <div class="active progress-bar-striped progress-bar <?php echo $bar; ?> role="progressbar" aria-valuenow="<?php echo $level; ?>" aria-valuemin="0" aria-valuemax="10" style="width:<?php echo $level*10; ?>%">
-                            <?php echo $level*10; ?>%</span>
+                            <?php echo $level*10; ?>%
                         </div>
                     </div>
                 </div>
