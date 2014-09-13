@@ -98,7 +98,8 @@ class RolesHero extends AppModel {
     public function getRandomTeamByRoles($roles){
         $heroesByRole = array();
         for ($i = 0; $i < 5; $i++) {
-            $heroesByRole[$i] = $this->find('first', array('conditions' => array('role_id' => $roles[$i]['Role']['id'], 'level >' => 5), 'order' => 'rand()', 'fields'=>'RolesHero.hero_id'))['RolesHero']['hero_id'];
+            $heroId = $this->find('first', array('conditions' => array('role_id' => $roles[$i]['Role']['id'], 'level >' => 5, 'NOT'=>array('RolesHero.hero_id'=>$heroesByRole)), 'order' => 'rand()', 'fields'=>'RolesHero.hero_id'));
+            $heroesByRole[$i] = $heroId['RolesHero']['hero_id'];
         }
 
         for ($i = 0; $i < 5; $i++) {
@@ -122,7 +123,8 @@ class RolesHero extends AppModel {
         $this->virtualFields = array('total'=>'SUM(RolesHero.level)');
 
         for($i=0; $i<count($roles); $i++){
-            $roles[$i]['Role']['avgLevel'] = $this->find('all', array('fields'=>array('total'), 'conditions' => array('RolesHero.hero_id'=>$heroesId, 'RolesHero.role_id'=>$roles[$i]['Role']['id'])))[0]['RolesHero']['total'];
+            $avgLevel = $this->find('all', array('fields'=>array('total'), 'conditions' => array('RolesHero.hero_id'=>$heroesId, 'RolesHero.role_id'=>$roles[$i]['Role']['id'])));
+            $roles[$i]['Role']['avgLevel'] = $avgLevel[0]['RolesHero']['total'];
             //if($max < $roles[$i]['Role']['avgLevel']) $max = $roles[$i]['Role']['avgLevel'];
         }
 

@@ -140,7 +140,7 @@ class HeroesController extends AppController {
     }
 
     public function randomTeamByStrategy($strategy_id=null){
-        $roles = $this->Hero->RolesHero->Role->getRolesByStrategy(0);
+        $roles = $this->Hero->RolesHero->Role->getRolesByStrategy(1);
         $heroes = $this->Hero->RolesHero->getRandomTeamByRoles($roles);
         $this->set('Strategy', $roles);
         $this->set('randomTeam', $heroes);
