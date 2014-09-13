@@ -1,9 +1,10 @@
 <div class="col-lg-2">
     <div class="menu">
         <div class="actions">
-            <?php   echo $this->Form->create('Heroes');
-            echo $this->Form->input('busqueda');
-            echo $this->Form->end('Search');
+            <?php
+                echo $this->Form->create('Heroes');
+                echo $this->Form->input('busqueda');
+                echo $this->Form->end('Search');
             ?>
             <h3><?php echo __('Actions'); ?></h3>
             <ul>

@@ -65,3 +65,9 @@
     border-style: ridge;
     border-color: #101010;
 }
+.roleTittle{
+    color: #31b0d5;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}

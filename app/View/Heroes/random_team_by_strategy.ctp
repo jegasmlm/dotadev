@@ -19,14 +19,15 @@ endforeach;?>
             <div class="col-lg-12">
                 <?php for($i=0;$i<10; $i++)
                     $roles[$i]['level'] = 0;
-                foreach($randomTeam as $hero):?>
+                for($i=0; $i<5; $i++){?>
                     <div class="col-md-2">
-                        <?php echo  $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png', array('class'=>'randomTeamThumbnail'));?>
+                        <?php echo  $this->Html->image(str_replace(' ', '_', strtolower($randomTeam[$i]['Hero']['name'])).'_full.png', array('class'=>'randomTeamThumbnail'));?>
                         <div class="centerText">
-                            <?php echo $hero['Hero']['name']; ?>
+                            <?php echo $randomTeam[$i]['Hero']['name']; ?>
                         </div>
+                        <div class="centerText roleTittle"><?php echo $Strategy[$i]['Role']['name']; ?></div>
                     </div>
-                <?php endforeach; ?>
+                <?php } ?>
             </div>
         </div>
     </div>

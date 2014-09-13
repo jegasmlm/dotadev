@@ -34,6 +34,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 
 		//echo $this->fetch('meta');
+        echo $this->fetch('bootstrap');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
@@ -53,6 +54,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                             <li><?php echo $this->Html->link('Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
                             <li><?php echo $this->Html->link('Sides', array('controller'=>'Sides', 'action'=>'index')); ?></li>
                             <li><?php echo $this->Html->link('Groups', array('controller'=>'Groups', 'action'=>'index')); ?></li>
+                            <li class="dropdown">
+                                <?php echo $this->Html->link('Strategies', array('controller'=>'Strategies', 'action'=>'index'), array('class'=>'dropdown-toogle', 'data-toogle'=>'dropdown')); ?>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <?php echo $this->Html->link('New Strategy', array('controller'=>'Strategies', 'action'=>'index')); ?>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search">
                             <div class="form-group">
@@ -70,5 +79,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-modal.js"></script>
+<script>
+    $('.dropdown-toggle').dropdown();
+
+</script>
 </body>
 </html>
