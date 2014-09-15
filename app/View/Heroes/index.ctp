@@ -3,7 +3,7 @@
         <div class="actions">
             <?php
                 echo $this->Form->create('Heroes');
-                echo $this->Form->input('busqueda');
+                echo $this->Form->input('Search');
                 echo $this->Form->end('Search');
             ?>
             <h3><?php echo __('Actions'); ?></h3>
@@ -40,7 +40,7 @@
             <?php foreach ($heroes as $hero): ?>
             <tr>
                 <td><?php echo h($hero['Hero']['id']); ?></td>
-                <td><?php echo h($hero['Hero']['name']); ?></td>
+                <td><?php echo $this->Html->link(h($hero['Hero']['name']), array('action' => 'view', $hero['Hero']['id'])); ?></td>
                 <td><?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?></td>
                 <td><?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?></td>
                 <td><?php echo $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png',array('class' => 'heroeThumbnail')); ?></td>
