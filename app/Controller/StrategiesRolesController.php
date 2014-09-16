@@ -23,7 +23,7 @@ class StrategiesRolesController extends AppController {
 	public function index() {
 		$this->StrategiesRole->recursive = 0;
 		$this->set('strategiesRoles', $this->Paginator->paginate());
-        $this->StrategiesRole->getRoles(0);
+        //$this->StrategiesRole->getRoles(0);
 	}
 
 /**
