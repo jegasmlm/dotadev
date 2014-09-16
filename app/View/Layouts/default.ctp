@@ -68,6 +68,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                 </ul>
                             </li>
                             <li id="compareSec"><?php echo $this->Html->link('Compare Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
+                            <li id="compareSec"><?php echo $this->Html->link('Logout', array('controller'=>'Users', 'action'=>'logout')); ?></li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search">
                             <div class="form-group">

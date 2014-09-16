@@ -35,13 +35,17 @@ class AppController extends Controller {
         'DebugKit.Toolbar',
         'Session',
         'Auth' => array(
+            'loginAction' => array(
+                'controller' => 'users',
+                'action' => 'login',
+            ),
             'loginRedirect' => array(
-                'controller' => 'posts',
-                'action' => 'index'
+                'controller' => 'heroes',
+                'action' => 'home'
             ),
             'logoutRedirect' => array(
-                'controller' => 'pages',
-                'action' => 'display',
+                'controller' => 'users',
+                'action' => 'login',
                 'home'
             ),
             'authenticate' => array(
