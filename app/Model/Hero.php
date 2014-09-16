@@ -123,24 +123,26 @@ class Hero extends AppModel {
 
     public function getRandomTeam(){
         $this->recursive = -1;
-        $heroes = $this->find('all');
+        //$heroes = $this->find('all');
 
-        $randId = array(0, 0, 0, 0, 0);
-
+        //$randId = array(0, 0, 0, 0, 0);
+        $heroesId = array();
         for($i=0; $i<5; $i++){
-            $rand = rand(0, count($heroes)-$i-1);
+            $heroes[$i] = $this->find('first', array('conditions'=>array('NOT'=>array('Hero.id'=>$heroesId)), 'order'=>'rand()'));
+            $heroesId[$i] = $heroes[$i]['Hero']['id'];
+            /*$rand = rand(0, count($heroes)-$i-1);
             for($j=0; $j<$i; $j++){
                 if($rand >= $randId[$j])
                     $rand++;
             }
-            $randId[$i] = $rand;
+            $randId[$i] = $rand;*/
         }
 
         for($i=0; $i<5; $i++){
-            $heroes[$randId[$i]]['Roles'] = $this->RolesHero->getRolesHero($heroes[$randId[$i]]['Hero']['id']);
+            $heroes[$i]['Roles'] = $this->RolesHero->getRolesHero($heroes[$i]['Hero']['id']);
         }
 
-        return array($heroes[$randId[0]], $heroes[$randId[1]], $heroes[$randId[2]], $heroes[$randId[3]], $heroes[$randId[4]]);
+        return $heroes;
     }
 
     public function getHeroByGroup($group_id){

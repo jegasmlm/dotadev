@@ -98,7 +98,7 @@ class RolesHero extends AppModel {
     public function getRandomTeamByRoles($roles){
         $heroesByRole = array();
         for ($i = 0; $i < 5; $i++) {
-            $heroId = $this->find('first', array('conditions' => array('role_id' => $roles[$i]['Role']['id'], 'level >' => 5, 'NOT'=>array('RolesHero.hero_id'=>$heroesByRole)), 'order' => 'rand()', 'fields'=>'RolesHero.hero_id'));
+            $heroId = $this->find('first', array('conditions' => array('role_id' => $roles[$i]['Role']['id'], 'level >' => 6, 'NOT'=>array('RolesHero.hero_id'=>$heroesByRole)), 'order' => 'rand()', 'fields'=>'RolesHero.hero_id'));
             $heroesByRole[$i] = $heroId['RolesHero']['hero_id'];
         }
 

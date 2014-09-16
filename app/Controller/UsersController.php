@@ -20,6 +20,29 @@ class UsersController extends AppController {
  *
  * @return void
  */
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('add', 'logout', 'login');
+    }
+
+    public function login() {
+        if ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Session->setFlash(__('Invalid username or password, try again'));
+        }
+    }
+
+    public function logout() {
+        return $this->redirect($this->Auth->logout());
+    }
+
+/**
+ * index method
+ *
+ * @return void
+ */
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
