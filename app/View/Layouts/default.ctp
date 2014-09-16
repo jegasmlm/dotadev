@@ -25,15 +25,17 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
+
 	<?php
-		//echo $this->Html->meta('icon');
-
-		//echo $this->Html->css('cake.generic');
         echo $this->Html->css("bootstrap");
-		echo $this->Html->css('dota');
+        echo $this->Html->css('dota');
 
+        echo $this->Html->script('//code.jquery.com/jquery-1.11.1.min.js');
+        echo $this->Html->script('//code.jquery.com/ui/1.10.3/jquery-ui.min.js');
 
-		//echo $this->fetch('meta');
+        echo $this->Html->script('bootstrap');
+        echo $this->Html->script('dotaFunc');
+
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
@@ -50,24 +52,22 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     </div>
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li><?php echo $this->Html->link('Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
-                            <li><?php echo $this->Html->link('Sides', array('controller'=>'Sides', 'action'=>'index')); ?></li>
-                            <li><?php echo $this->Html->link('Groups', array('controller'=>'Groups', 'action'=>'index')); ?></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Strategies <span class="caret"></span></a>
+                            <li id="heroesSec"><?php echo $this->Html->link('Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
+                            <li id="sidesSec"><?php echo $this->Html->link('Sides', array('controller'=>'Sides', 'action'=>'index')); ?></li>
+                            <li id="groupsSec"><?php echo $this->Html->link('Groups', array('controller'=>'Groups', 'action'=>'index')); ?></li>
+                            <li id="strategySec"><?php echo $this->Html->link('Strategies', array('controller'=>'Strategies', 'action'=>'index')); ?></li>
+                            <li class="dropdown" id="randomSec">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Generate Team <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <?php echo $this->Html->link('Strategies', array('controller'=>'Strategies', 'action'=>'index')); ?>
+                                        <?php echo $this->Html->link('All Random', array('controller'=>'Heroes', 'action'=>'randomTeam')); ?>
                                     </li>
                                     <li>
-                                        <?php echo $this->Html->link('Create Strategy', array('controller'=>'Strategies', 'action'=>'add')); ?>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <?php echo $this->Html->link('Edit Strategy', array('controller'=>'Strategies', 'action'=>'edit')); ?>
+                                        <?php echo $this->Html->link('Random by Strategy', array('controller'=>'Heroes', 'action'=>'randomTeamByStrategy')); ?>
                                     </li>
                                 </ul>
                             </li>
+                            <li id="compareSec"><?php echo $this->Html->link('Compare Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search">
                             <div class="form-group">
