@@ -46,7 +46,7 @@
         </div>
     </div>
 </div>
-<div class="col-lg-4">
+<div class="col-lg-8">
     <div class="panel panel-default">
         <div class="panel-heading"><h2>Roles Clasification</h2></div>
         <div class="panel-body">
@@ -60,12 +60,24 @@
                     $bar = "progress-bar-success";
                 ?>
             <div class="row">
-                <div class="col-md-4"><?php echo $rolesHero['Role']['name']; ?></div>
-                <div class="col-md-6">
-                    <div class="progress">
-                        <div class="active progress-bar-striped progress-bar <?php echo $bar; ?> role="progressbar" aria-valuenow="<?php echo $level; ?>" aria-valuemin="0" aria-valuemax="10" style="width:<?php echo $level*10; ?>%">
-                            <?php echo $level*10; ?>%
+                <div class="col-md-2"><?php echo $rolesHero['Role']['name']; ?></div>
+                <div class="col-md-8">
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-default btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','minus')">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="progress">
+                            <div id="<?php echo $rolesHero['Role']['name']; ?>" class="active progress-bar-striped progress-bar <?php echo $bar; ?>" role="progressbar" aria-valuenow="<?php echo $level; ?>" aria-valuemin="0" aria-valuemax="10" style="width:<?php echo $level*10; ?>%">
+                                <?php echo $level*10; ?>%
+                            </div>
                         </div>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-default btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','plus')">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -74,11 +86,5 @@
             </div>
             <?php endforeach; ?>
         </div>
-    </div>
-</div>
-<div class="col-lg-4">
-    <div class="panel panel-default">
-        <div class="panel-heading"><h2>Stats and Atributes</h2></div>
-        <div class="panel-body">
     </div>
 </div>

@@ -17,7 +17,7 @@ class HeroesController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('home', 'index', 'view');
+        $this->Auth->allow('home', 'index', 'view','randomTeam', 'randomTeamByStrategy');
     }
 
 /**
