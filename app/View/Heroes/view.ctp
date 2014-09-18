@@ -25,22 +25,36 @@
                 <div class="col-md-4">
                     <?php echo $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png'); ?>
                 </div>
-                <div class="col-md-4">
-                    <div>
-                        <h3><?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?></h3>
+                <div class="col-md-8">
+                    <div class="col-md-3">
+                        <h4><?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?></h4>
                     </div>
-                    <div>
-                        <h3><?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?></h3>
+                    <div class="col-md-3">
+                        <h4><?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?></h4>
                     </div>
-                    <div>
+                    <div class="col-md-6">
                         <div class="bestRol">
-                            <h5>
-                            <?php for($i=0;$i<3;$i++)
-                                echo $topHeroRoles[$i]['Role']['name']." ";
+                            <h4>
+                            <?php
+                                echo $topHeroRoles[0]['Role']['name']." - ".$topHeroRoles[1]['Role']['name'];
                             ?>
-                            </h5>
+                            </h4>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-6 col-md-push-1">
+                    <div class="col-md-2">Int:</div>
+                    <div class="col-md-4">15+1.8</div>
+                    <div class="col-md-2">Attack</div>
+                    <div class="col-md-4">27-31</div>
+                    <div class="col-md-2">Agi:</div>
+                    <div class="col-md-4">22+2.8</div>
+                    <div class="col-md-2">Speed:</div>
+                    <div class="col-md-4">320</div>
+                    <div class="col-md-2">Str:</div>
+                    <div class="col-md-4">20+1.2</div>
+                    <div class="col-md-2">Shield:</div>
+                    <div class="col-md-4">2.08</div>
                 </div>
             </div>
         </div>
@@ -63,7 +77,7 @@
                 <div class="col-md-2"><?php echo $rolesHero['Role']['name']; ?></div>
                 <div class="col-md-8">
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-default btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','minus')">
+                        <button type="button" class="btn btn-info btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','minus')">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </div>
@@ -75,7 +89,7 @@
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-default btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','plus')">
+                        <button type="button" class="btn btn-info btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','plus')">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </div>
@@ -85,6 +99,7 @@
                 </div>
             </div>
             <?php endforeach; ?>
+                    <a href="#" class="btn btn-default btn-sm pull-right">Save Changes</a>
         </div>
     </div>
 </div>
