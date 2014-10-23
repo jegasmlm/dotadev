@@ -25,7 +25,7 @@ class HeroesController extends AppController {
  *
  * @return void
  */
-	public function index($filterString=null)
+	public function index($filterString = null)
     {
         $this->Hero->recursive = 0;
 
@@ -36,7 +36,7 @@ class HeroesController extends AppController {
         $this->render('index');
 	}
 
-    public function search($filterString=null) {
+    public function search($filterString = null) {
         $this ->Hero->recursive = 0;
 
         if($filterString != null)
