@@ -1,19 +1,19 @@
 <div class="row">
     <div class="col-lg-8">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-push-1">
                 <div class="strongTittle centerText">Strength</div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-push-1">
                 <div class="strongTittle centerText">Agility</div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-push-1">
                 <div class="strongTittle centerText">Inteligence</div>
             </div>
         </div>
     </div>
     <?php foreach($heroes as $side):?>
-    <div class="col-lg-8" style="padding-top: 25px">
+    <div class="col-lg-8 col-md-push-1" style="padding-top: 25px">
         <div class="row">
             <?php foreach ($side as $HeroGRP):?>
             <div class="col-lg-4">

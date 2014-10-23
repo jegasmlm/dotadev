@@ -68,9 +68,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                 </ul>
                             </li>
                             <li id="compareSec"><?php echo $this->Html->link('Compare Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
-                            <li id="compareSec"><?php echo $this->Html->link('Logout', array('controller'=>'Users', 'action'=>'logout')); ?></li>
                         </ul>
-                        <form class="navbar-form navbar-right" role="search">
+                        <button type="submit" class="btn btn-default btn-sm navbar-btn pull-right" data-toggle="modal" data-target="#Modal">
+                            <span class="glyphicon glyphicon-off"></span> Login
+                        </button>
+                        <form class="navbar-form" role="search">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search">
                             </div>
@@ -81,7 +83,57 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             </div>
         </div>
 		<div>
+            <!--  modal -->
+            <div id="Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close"
+                                    data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                Sing In
+                            </h4>
+                        </div>
+                        <form class="form-horizontal" role="form">
+                        <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-3 control-label">Username</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="username"
+                                               placeholder="username">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-3 control-label">Password</label>
+                                    <div class="col-sm-5">
+                                        <input type="password" class="form-control" id="password"
+                                               placeholder="password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Remember me
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">Close
+                            </button>
 
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Modal -->
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
