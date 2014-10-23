@@ -21,11 +21,23 @@ endforeach;?>
                 $roles[$i]['level'] = 0;
                 foreach($randomTeam as $hero):?>
                 <div class="col-md-2">
-                    <?php echo  $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png', array('class'=>'randomTeamThumbnail'));?>
+                    <?php echo $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png',
+                                                    array('class'=>'randomTeamThumbnail',
+                                                            'url'=> array('controller'=>'Heroes','action'=>'view', $hero['Hero']['id']),
+                                                                            'data-toggle'=>'tooltip',
+                                                                            'title'=>$hero['Hero']['name'])
+                                                    );?>
                     <div class="centerText">
                         <?php echo $hero['Hero']['name']; ?>
                     </div>
                 </div>
+                    <!-- Tooltip Message-->
+                    <div class="tooltip top" role="tooltip">
+                        <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            Some tooltip text!
+                        </div>
+                    </div>
             <?php endforeach; ?>
             </div>
         </div>
