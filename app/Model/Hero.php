@@ -6,7 +6,7 @@ App::uses('AppModel', 'Model');
  * @property Side $Side
  * @property Group $Group
  * @property RolesHero $RolesHero
- * @property UsersHero $UsersHero
+ * @property User $User
  */
 class Hero extends AppModel {
 
@@ -37,6 +37,106 @@ class Hero extends AppModel {
 			),
 		),
 		'group_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'attack_min' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'attack_max' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'speed' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'shield' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'base_strength' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'lvl_strength' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'base_agility' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'lvl_agility' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'base_intelligence' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'lvl_intelligence' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -90,82 +190,29 @@ class Hero extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),
-		'UsersHero' => array(
-			'className' => 'UsersHero',
+		)
+	);
+
+
+/**
+ * hasAndBelongsToMany associations
+ *
+ * @var array
+ */
+	public $hasAndBelongsToMany = array(
+		'User' => array(
+			'className' => 'User',
+			'joinTable' => 'heroes_users',
 			'foreignKey' => 'hero_id',
-			'dependent' => false,
+			'associationForeignKey' => 'user_id',
+			'unique' => 'keepExisting',
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
 			'limit' => '',
 			'offset' => '',
-			'exclusive' => '',
 			'finderQuery' => '',
-			'counterQuery' => ''
 		)
 	);
 
-/**
- * Funtion to get the hero with role name
- * @param $id
- * @return array
- */
-    public function getHero($id){
-        $this->recursive=-1;
-        return $this->find('first', array('conditions'=>array('Hero.id'=>$id)));
-    }
-
-    public function view($id){
-        $options = array('conditions' => array('Hero.' . $this->primaryKey => $id), 'recursive' => 2);
-        return $this->find('first', $options);
-    }
-
-    public function getRandomTeam(){
-        $this->recursive = -1;
-        //$heroes = $this->find('all');
-
-        //$randId = array(0, 0, 0, 0, 0);
-        $heroesId = array();
-        for($i=0; $i<5; $i++){
-            $heroes[$i] = $this->find('first', array('conditions'=>array('NOT'=>array('Hero.id'=>$heroesId)), 'order'=>'rand()'));
-            $heroesId[$i] = $heroes[$i]['Hero']['id'];
-            /*$rand = rand(0, count($heroes)-$i-1);
-            for($j=0; $j<$i; $j++){
-                if($rand >= $randId[$j])
-                    $rand++;
-            }
-            $randId[$i] = $rand;*/
-        }
-
-        for($i=0; $i<5; $i++){
-            $heroes[$i]['Roles'] = $this->RolesHero->getRolesHero($heroes[$i]['Hero']['id']);
-        }
-
-        return $heroes;
-    }
-
-    public function getHeroByGroup($group_id){
-        return $this->find('all', array('conditions' => array('Hero.group_id' => $group_id)));
-    }
-
-    public function getHeroBySide($side_id){
-        return $this->find('all', array('conditions' => array('Hero.side_id' => $side_id)));
-    }
-
-    public function getHeroByGroupAndSide($group_id, $side_id){
-        return $this->find('all', array('conditions' => array('Hero.group_id' => $group_id, 'Hero.side_id' => $side_id)));
-    }
-
-    public function getHeroOrderedByGroups(){
-        $heroes['radiant']['RadiantStr'] = $this->getHeroByGroupAndSide(1,1);
-        $heroes['radiant']['RadiantAgi'] = $this->getHeroByGroupAndSide(2,1);
-        $heroes['radiant']['RadiantInt'] = $this->getHeroByGroupAndSide(3,1);
-
-        $heroes['dire']['DireStr'] = $this->getHeroByGroupAndSide(1,2);
-        $heroes['dire']['DireAgi'] = $this->getHeroByGroupAndSide(2,2);
-        $heroes['dire']['DireInt'] = $this->getHeroByGroupAndSide(3,2);
-
-        return $heroes;
-    }
 }

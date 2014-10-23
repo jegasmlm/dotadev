@@ -15,37 +15,15 @@ class HeroesController extends AppController {
  */
 	public $components = array('Paginator');
 
-    public function beforeFilter()
-	{
-		parent::beforeFilter();
-		$this->Auth->allow('home', 'index', 'view', 'randomTeam', 'randomTeamByStrategy');
-	}
-
 /**
  * index method
  *
  * @return void
  */
-	public function index($filterString=null)
-    {
-        $this->Hero->recursive = 0;
-
-        if ($this->request->is('post'))
-        $this->set('heroes', $this->Paginator->paginate('Hero', array('Hero.name LIKE' => "%".$this->request->data['Heroes']['busqueda']."%")));
-        else
-            $this->set('heroes', $this->Paginator->paginate());
-        $this->render('index');
+	public function index() {
+		$this->Hero->recursive = 0;
+		$this->set('heroes', $this->Paginator->paginate());
 	}
-
-    public function search($filterString=null) {
-        $this ->Hero->recursive = 0;
-
-        if($filterString != null)
-            $this->set('heroes', $this->Paginator->paginate('Hero', array('Hero.name LIKE' => "%$filterString%")));
-        else
-            $this->set('heroes', $this->Paginator->paginate());
-        $this->render('index');
-    }
 
 /**
  * view method
@@ -58,12 +36,8 @@ class HeroesController extends AppController {
 		if (!$this->Hero->exists($id)) {
 			throw new NotFoundException(__('Invalid hero'));
 		}
-		//$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
-        $this->set(array('hero' => $this->Hero->view($id), 'topHeroRoles' => $this->Hero->RolesHero->getTopRolesByHero($id)));
- /*       	$this->set(array(
-				'hero' => $this->Hero->view($id), 
-				'topHeroRoles' => $this->Hero->getTopRoles($id),
-				));*/
+		$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
+		$this->set('hero', $this->Hero->find('first', $options));
 	}
 
 /**
@@ -83,7 +57,6 @@ class HeroesController extends AppController {
 		}
 		$sides = $this->Hero->Side->find('list');
 		$groups = $this->Hero->Group->find('list');
-
 		$this->set(compact('sides', 'groups'));
 	}
 
@@ -134,25 +107,4 @@ class HeroesController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
-
-    public function home(){
-        $this->set('heroes', $this->Hero->getHeroOrderedByGroups());
-    }
-
-    public function randomTeam(){
-        $heroes = $this->Hero->getRandomTeam();
-        $this->set('randomTeam', $heroes);
-        $this->set('rolesAvg', $this->Hero->RolesHero->getAverageLevelsPerRole($heroes));
-    }
-
-    public function randomTeamByStrategy($strategy_id=null){
-        if($strategy_id==null)
-            $roles = $this->Hero->RolesHero->Role->getRolesByStrategy(1);
-        else
-            $roles = $this->Hero->RolesHero->Role->getRolesByStrategy($strategy_id);
-        $heroes = $this->Hero->RolesHero->getRandomTeamByRoles($roles);
-        $this->set('Strategy', $roles);
-        $this->set('randomTeam', $heroes);
-        $this->set('rolesAvg', $this->Hero->RolesHero->getAverageLevelsPerRole($heroes));
-    }
 }
