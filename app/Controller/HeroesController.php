@@ -15,10 +15,11 @@ class HeroesController extends AppController {
  */
 	public $components = array('Paginator');
 
-    public function beforeFilter() {
-        parent::beforeFilter();
-        $this->Auth->allow('home', 'index', 'view','randomTeam', 'randomTeamByStrategy');
-    }
+    public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$this->Auth->allow('home', 'index', 'view', 'randomTeam', 'randomTeamByStrategy');
+	}
 
 /**
  * index method
