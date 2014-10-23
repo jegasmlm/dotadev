@@ -19,7 +19,12 @@
 </div>
 <div class="col-lg-8">
     <div class="panel panel-default">
-        <div class="panel-heading"><h1><?php echo h($hero['Hero']['name']); ?></h1></div>
+        <div class="panel-heading">
+            <h1>
+                <?php echo h($hero['Hero']['name']); ?>
+                <?php echo $this->Html->link('Edit', array('controller'=>'#','action'=>'#'), array('class'=>'btn btn-default btn-md pull-right disabled')); ?>
+            </h1>
+        </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
@@ -42,27 +47,47 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-md-push-1">
-                    <div class="col-md-2">Int:</div>
-                    <div class="col-md-4">15+1.8</div>
-                    <div class="col-md-2">Attack</div>
-                    <div class="col-md-4">27-31</div>
-                    <div class="col-md-2">Agi:</div>
-                    <div class="col-md-4">22+2.8</div>
-                    <div class="col-md-2">Speed:</div>
-                    <div class="col-md-4">320</div>
-                    <div class="col-md-2">Str:</div>
-                    <div class="col-md-4">20+1.2</div>
-                    <div class="col-md-2">Shield:</div>
-                    <div class="col-md-4">2.08</div>
+                <div class="col-md-7 col-md-push-1">
+                    <form role="form" name="form_Stats" id="form_Stats">
+                        <div class="col-md-2">Intelligence:</div>
+                        <div class="col-md-4">
+                            <input size="1" maxlength="2" id="base_intelligence" type="text" value="15"> + <input size="1" maxlength="3" id="lvl_intelligence" type="text" value="1.8">
+                        </div>
+                        <div class="col-md-2">Attack</div>
+                        <div class="col-md-4">
+                            <input size="1" maxlength="2" id="attack_min" type="text" value="27"> - <input size="1" maxlength="2" id="attack_max" type="text" value="33">
+                        </div>
+                        <div class="col-md-2">Agility:</div>
+                        <div class="col-md-4">
+                            <input size="1" maxlength="2" id="base_agility" type="text" value="22"> + <input size="1" maxlength="3" id="lvl_agility" type="text" value="2.8">
+                        </div>
+                        <div class="col-md-2">Speed:</div>
+                        <div class="col-md-4">
+                            <input size="1" maxlength="3" id="speed" type="text" value="320">
+                        </div>
+                        <div class="col-md-2">Strength:</div>
+                        <div class="col-md-4">
+                            <input size="1" maxlength="2" id="base_strength" type="text" value="20"> + <input size="1" maxlength="3" id="lvl_strength" type="text" value="1.2">
+                        </div>
+                        <div class="col-md-2">Shield:</div>
+                        <div class="col-md-4">
+                            <input size="1" maxlength="4" id="shield" type="text" value="2.08">
+                        </div>
+                    </form>
                 </div>
             </div>
+            <a href="#" class="btn btn-primary btn-sm pull-right">Save Changes</a>
         </div>
     </div>
 </div>
 <div class="col-lg-8">
     <div class="panel panel-default">
-        <div class="panel-heading"><h2>Roles Clasification</h2></div>
+        <div class="panel-heading">
+            <h2>
+                Roles Clasification
+                <?php echo $this->Html->link('Edit', array('controller'=>'#','action'=>'#'), array('class'=>'btn btn-default btn-md pull-right disabled')); ?>
+            </h2>
+        </div>
         <div class="panel-body">
             <?php foreach ($hero['RolesHero'] as $rolesHero):
                 $level = $rolesHero['level'];
@@ -77,8 +102,8 @@
                 <div class="col-md-2"><?php echo $rolesHero['Role']['name']; ?></div>
                 <div class="col-md-8">
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-info btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','minus')">
-                            <span class="glyphicon glyphicon-minus"></span>
+                        <button type="button" class="btn btn-default btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','minus')">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
                         </button>
                     </div>
                     <div class="col-md-10">
@@ -89,17 +114,14 @@
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-info btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','plus')">
-                            <span class="glyphicon glyphicon-plus"></span>
+                        <button type="button" class="btn btn-default btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','plus')">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
                         </button>
                     </div>
                 </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-xs btn-default"><?php echo $this->Html->link(__('Edit'), array('controller' => 'roles_heros', 'action' => 'edit', $rolesHero['id'])); ?></button>
-                </div>
             </div>
             <?php endforeach; ?>
-                    <a href="#" class="btn btn-default btn-sm pull-right">Save Changes</a>
+                    <a href="#" class="btn btn-primary btn-sm pull-right">Save Changes</a>
         </div>
     </div>
 </div>
