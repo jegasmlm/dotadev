@@ -2,8 +2,6 @@
     <div class="menu">
             <h3><?php echo __('Actions'); ?></h3>
             <ul>
-                <li><?php echo $this->Html->link(__('Edit Hero'), array('action' => 'edit', $hero['Hero']['id'])); ?> </li>
-                <li><?php echo $this->Form->postLink(__('Delete Hero'), array('action' => 'delete', $hero['Hero']['id']), array(), __('Are you sure you want to delete # %s?', $hero['Hero']['id'])); ?> </li>
                 <li><?php echo $this->Html->link(__('List Heroes'), array('action' => 'index')); ?> </li>
                 <li><?php echo $this->Html->link(__('New Hero'), array('action' => 'add')); ?> </li>
                 <li><?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index')); ?> </li>

@@ -1,30 +1,26 @@
 <div class="col-lg-2">
-    <div class="menu">
-        <div class="actions">
-            <?php
-                echo $this->Form->create('Heroes');
-                echo $this->Form->input('Search');
-                echo $this->Form->end('Search');
-            ?>
-            <h3><?php echo __('Actions'); ?></h3>
-            <ul>
-                <li><?php echo $this->Html->link(__('New Hero'), array('action' => 'add')); ?></li>
-                <li><?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index')); ?> </li>
-                <li><?php echo $this->Html->link(__('New Side'), array('controller' => 'sides', 'action' => 'add')); ?> </li>
-                <li><?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index')); ?> </li>
-                <li><?php echo $this->Html->link(__('New Group'), array('controller' => 'groups', 'action' => 'add')); ?> </li>
-                <li><?php echo $this->Html->link(__('List Roles Heros'), array('controller' => 'roles_heros', 'action' => 'index')); ?> </li>
-                <li><?php echo $this->Html->link(__('New Roles Hero'), array('controller' => 'roles_heros', 'action' => 'add')); ?> </li>
-                <li><?php echo $this->Html->link(__('List Users Heros'), array('controller' => 'users_heros', 'action' => 'index')); ?> </li>
-                <li><?php echo $this->Html->link(__('New Users Hero'), array('controller' => 'users_heros', 'action' => 'add')); ?> </li>
-            </ul>
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4><?php echo __('Actions'); ?></h4></div>
+        <div class="panel-body">
+            <div class="list-group">
+                <?php echo $this->Html->link(__('List Heros'), array('controller' => 'heroes', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                <?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                <?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                <?php echo $this->Html->link(__('List Roles Heros'), array('controller' => 'roles_heros', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                <?php echo $this->Html->link(__('List Users Heros'), array('controller' => 'users_heros', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+            </div>
         </div>
     </div>
 </div>
 <div class="col-lg-8">
 <div class="panel panel-default">
     <!-- Default Panel Contents -->
-    <div class="panel-heading"><h2><?php echo __('Heroes'); ?></h2></div>
+    <div class="panel-heading">
+        <h2>
+            <?php echo __('Heroes'); ?>
+            <?php echo $this->Html->link('New Hero', array('action'=>'add'), array('class'=>'btn btn-info btn-md pull-right')); ?>
+        </h2>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -45,9 +41,9 @@
                 <td><?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?></td>
                 <td><?php echo $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png',array('class' => 'heroeThumbnail')); ?></td>
                 <td>
-                    <?php echo $this->Html->link(__('View'), array('action' => 'view', $hero['Hero']['id']), array('class'=>'btn btn-default btn-xs')); ?>
-                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $hero['Hero']['id']), array('class'=>'btn btn-default btn-xs')); ?>
-                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $hero['Hero']['id']), array('class'=>'btn btn-default btn-xs'), array(), __('Are you sure you want to delete # %s?', $hero['Hero']['id'])); ?>
+                    <?php echo $this->Html->link(__('View'), array('action' => 'view', $hero['Hero']['id']), array('class'=>'btn btn-success btn-xs')); ?>
+                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $hero['Hero']['id']), array('class'=>'btn btn-warning btn-xs')); ?>
+                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $hero['Hero']['id']), array('class'=>'btn btn-danger btn-xs'), array(), __('Are you sure you want to delete # %s?', $hero['Hero']['id'])); ?>
                 </td>
             </tr>
         </tbody>

@@ -53,8 +53,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li id="heroesSec"><?php echo $this->Html->link('Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
-                            <li id="sidesSec"><?php echo $this->Html->link('Sides', array('controller'=>'Sides', 'action'=>'index')); ?></li>
-                            <li id="groupsSec"><?php echo $this->Html->link('Groups', array('controller'=>'Groups', 'action'=>'index')); ?></li>
                             <li id="strategySec"><?php echo $this->Html->link('Strategies', array('controller'=>'Strategies', 'action'=>'index')); ?></li>
                             <li class="dropdown" id="randomSec">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Generate Team <span class="caret"></span></a>
@@ -69,9 +67,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                             </li>
                             <li id="compareSec"><?php echo $this->Html->link('Compare Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
                         </ul>
-                        <button type="submit" class="btn btn-default btn-sm navbar-btn pull-right" data-toggle="modal" data-target="#Modal">
-                            <span class="glyphicon glyphicon-off"></span> Login
-                        </button>
+                        <?php if($this->Session->read('Auth.User') == null){ ?>
+                            <?php echo $this->Html->link('Login', array('controller'=>'users','action'=>'login'), array('class'=>'btn btn-default btn-sm navbar-btn pull-right')); ?>
+                        <?php }else{ ?>
+                            <?php echo $this->Html->link('Logout', array('controller'=>'users','action'=>'logout'), array('class'=>'btn btn-danger btn-sm navbar-btn pull-right')); ?>
+                        <?php } ?>
                         <form class="navbar-form" role="search">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search">
@@ -96,39 +96,26 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                 Sing In
                             </h4>
                         </div>
-                        <form class="form-horizontal" role="form">
-                        <div class="modal-body">
+                        <form class="form-horizontal" role="form" action="user/login" method="post">
+                            <?php echo $this->Form->create('User'); ?>
+                            <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="username" class="col-sm-3 control-label">Username</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" class="form-control" id="username"
-                                               placeholder="username">
+                                    <div class="col-sm-6">
+                                        <?php echo $this->Form->input('username', array('type'=>'text', 'class'=>'form-control', 'placeholder'=>'username')); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password" class="col-sm-3 control-label">Password</label>
-                                    <div class="col-sm-5">
-                                        <input type="password" class="form-control" id="password"
-                                               placeholder="password">
+                                    <div class="col-sm-6">
+                                        <?php echo $this->Form->input('password', array('type'=>'password', 'class'=>'form-control', 'placeholder'=>'username'));?>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-5">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> Remember me
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default"
-                                    data-dismiss="modal">Close
-                            </button>
-
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">Close
+                                </button>
+                                <?php echo $this->Form->button('Sign in',array('type'=>'submit', 'class'=>'btn btn-primary')); ?>
+                            </div>
                         </form>
                     </div>
                 </div>

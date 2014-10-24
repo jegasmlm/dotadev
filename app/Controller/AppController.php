@@ -41,11 +41,12 @@ class AppController extends Controller {
             ),
             'loginRedirect' => array(
                 'controller' => 'heroes',
-                'action' => 'home'
+                'action' => 'home',
+                'home'
             ),
             'logoutRedirect' => array(
-                'controller' => 'users',
-                'action' => 'login',
+                'controller' => 'heroes',
+                'action' => 'home',
                 'home'
             ),
             'authenticate' => array(
