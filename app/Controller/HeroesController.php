@@ -26,7 +26,7 @@ class HeroesController extends AppController {
  *
  * @return void
  */
-	public function index($filterString=null)
+	public function index($filterString = null)
     {
         $this->Hero->recursive = 0;
 

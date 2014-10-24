@@ -28,31 +28,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-7 col-md-push-1">
+                <div class="col-md-8 col-md-push-1">
                     <form role="form" name="form_Stats" id="form_Stats">
                         <div class="col-md-2">Intelligence:</div>
                         <div class="col-md-4">
-                            <input size="1" maxlength="2" id="base_intelligence" type="text" value="15"> + <input size="1" maxlength="3" id="lvl_intelligence" type="text" value="1.8">
+                            <?php echo $hero['Hero']['base_intelligence']; ?> + <?php echo $hero['Hero']['lvl_intelligence']; ?>
                         </div>
                         <div class="col-md-2">Attack</div>
                         <div class="col-md-4">
-                            <input size="1" maxlength="2" id="attack_min" type="text" value="27"> - <input size="1" maxlength="2" id="attack_max" type="text" value="33">
+                            <?php echo $hero['Hero']['attack_min']; ?> - <?php echo $hero['Hero']['attack_max']; ?>
                         </div>
                         <div class="col-md-2">Agility:</div>
                         <div class="col-md-4">
-                            <input size="1" maxlength="2" id="base_agility" type="text" value="22"> + <input size="1" maxlength="3" id="lvl_agility" type="text" value="2.8">
+                            <?php echo $hero['Hero']['base_agility']; ?> + <?php echo $hero['Hero']['lvl_agility']; ?>
                         </div>
                         <div class="col-md-2">Speed:</div>
                         <div class="col-md-4">
-                            <input size="1" maxlength="3" id="speed" type="text" value="320">
+                            <?php echo $hero['Hero']['speed']; ?>
                         </div>
                         <div class="col-md-2">Strength:</div>
                         <div class="col-md-4">
-                            <input size="1" maxlength="2" id="base_strength" type="text" value="20"> + <input size="1" maxlength="3" id="lvl_strength" type="text" value="1.2">
+                            <?php echo $hero['Hero']['base_strength']; ?> + <?php echo $hero['Hero']['lvl_strength']; ?>
                         </div>
                         <div class="col-md-2">Shield:</div>
                         <div class="col-md-4">
-                            <input size="1" maxlength="4" id="shield" type="text" value="2.08">
+                            <?php echo $hero['Hero']['shield']; ?>
                         </div>
                     </form>
                 </div>
