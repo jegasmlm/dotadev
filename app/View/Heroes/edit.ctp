@@ -1,30 +1,55 @@
-<div class="heroes form">
-<?php echo $this->Form->create('Hero'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Hero'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('side_id');
-		echo $this->Form->input('group_id');
-		echo $this->Form->input('image');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Hero.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Hero.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Heroes'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Side'), array('controller' => 'sides', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Group'), array('controller' => 'groups', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Roles Heros'), array('controller' => 'roles_heros', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Roles Hero'), array('controller' => 'roles_heros', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users Heros'), array('controller' => 'users_heros', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Users Hero'), array('controller' => 'users_heros', 'action' => 'add')); ?> </li>
-	</ul>
+<div class="col-lg-8">
+	<div class="panel panel-default">
+		<?php echo $this->Form->create('Hero'); ?>
+		<?php echo $this->Form->input('Hero.id'); ?>
+		<div class="panel-heading">
+			<h1>
+				<?php echo $this->Form->input('Hero.name'); ?>
+				<?php echo $this->Html->link('Edit', array('controller'=>'#','action'=>'#'), array('class'=>'btn btn-default btn-md pull-right disabled')); ?>
+			</h1>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-4">
+					<?php echo $this->Html->image(str_replace(' ', '_', strtolower($this->request->data['Hero']['name'])).'_full.png'); ?>
+				</div>
+				<div class="col-md-8">
+					<div class="col-md-3">
+						<h4><?php echo $this->Form->input('side_id'); ?></h4>
+					</div>
+					<div class="col-md-3">
+						<h4><?php echo $this->Form->input('group_id'); ?></h4>
+					</div>
+				</div>
+				<div class="col-md-7 col-md-push-1">
+					<div class="col-md-4">
+						<?php echo $this->Form->input('Hero.base_intelligence'); ?> + <?php echo $this->Form->input('Hero.lvl_intelligence'); ?>
+					</div>
+					<div class="col-md-4">
+						<?php echo $this->Form->input('Hero.attack_min'); ?> - <?php echo $this->Form->input('Hero.attack_max'); ?>
+					</div>
+					<div class="col-md-4">
+						<?php echo $this->Form->input('Hero.base_agility'); ?> + <?php echo $this->Form->input('Hero.lvl_agility'); ?>
+					</div>
+					<div class="col-md-4">
+						<?php echo $this->Form->input('Hero.speed'); ?>
+					</div>
+					<div class="col-md-4">
+						<?php echo $this->Form->input('Hero.base_strength'); ?> + <?php echo $this->Form->input('Hero.lvl_strength'); ?>
+					</div>
+					<div class="col-md-4">
+						<?php echo $this->Form->input('Hero.shield'); ?>
+					</div>
+				</div>
+			</div>
+			<?php
+			$options = array(
+				'label' => 'Save Changes',
+				'div' => array(
+					'class' => 'btn btn-primary btn-sm pull-right'
+				)
+			);
+			echo $this->Form->end($options); ?>
+		</div>
+	</div>
 </div>

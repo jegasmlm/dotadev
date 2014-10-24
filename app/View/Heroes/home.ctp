@@ -1,3 +1,4 @@
+<?php echo $this->Session->flash('auth'); ?>
 <div class="row">
     <div class="col-lg-8">
         <div class="row">
