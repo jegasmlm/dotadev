@@ -42,18 +42,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body id="body">
 		<div id="header">
-            <div class="navbar navbar-inverse">
-                <div>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navegation</span>
-                        </button>
                         <?php echo $this->Html->link('ASK Team Maker', '/', array('class'=>'navbar-brand')); ?>
                     </div>
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li id="heroesSec"><?php echo $this->Html->link('Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
-                            <li id="strategySec"><?php echo $this->Html->link('Strategies', array('controller'=>'Strategies', 'action'=>'index')); ?></li>
                             <li class="dropdown" id="randomSec">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Generate Team <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -65,64 +60,38 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                     </li>
                                 </ul>
                             </li>
-                            <li id="compareSec"><?php echo $this->Html->link('Compare Heroes', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
+                            <?php if($this->Session->read('Auth.User') != null){?>
+                                <li><?php echo $this->Html->link('Administrator', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
+                                <p class="navbar-text navbar-right">Signed in as <?php echo $this->Session->read('Auth.User.username');?></p>
+                            <?php }?>
                         </ul>
                         <?php if($this->Session->read('Auth.User') == null){ ?>
                             <?php echo $this->Html->link('Login', array('controller'=>'users','action'=>'login'), array('class'=>'btn btn-default btn-sm navbar-btn pull-right')); ?>
                         <?php }else{ ?>
                             <?php echo $this->Html->link('Logout', array('controller'=>'users','action'=>'logout'), array('class'=>'btn btn-danger btn-sm navbar-btn pull-right')); ?>
                         <?php } ?>
-                        <form class="navbar-form" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default">Search</button>
-                        </form>
                     </div>
                 </div>
-            </div>
+            </nav>
         </div>
 		<div>
-            <!--  modal -->
-            <div id="Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close"
-                                    data-dismiss="modal" aria-hidden="true">
-                                &times;
-                            </button>
-                            <h4 class="modal-title" id="myModalLabel">
-                                Sing In
-                            </h4>
+            <?php if($this->Session->read('Auth.User') != null){?>
+                <div class="col-lg-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h4><?php echo __('Actions'); ?></h4></div>
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <?php echo $this->Html->link(__('List Heros'), array('controller' => 'heroes', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                                <?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                                <?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                                <?php echo $this->Html->link(__('List Strategies'), array('controller' => 'strategies', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                                <?php echo $this->Html->link(__('List Roles Heros'), array('controller' => 'roles_heros', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                                <?php echo $this->Html->link(__('List Users Heros'), array('controller' => 'users_heros', 'action' => 'index'),array('class'=>'list-group-item')); ?>
+                            </div>
                         </div>
-                        <form class="form-horizontal" role="form" action="user/login" method="post">
-                            <?php echo $this->Form->create('User'); ?>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <?php echo $this->Form->input('username', array('type'=>'text', 'class'=>'form-control', 'placeholder'=>'username')); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <?php echo $this->Form->input('password', array('type'=>'password', 'class'=>'form-control', 'placeholder'=>'username'));?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default"
-                                        data-dismiss="modal">Close
-                                </button>
-                                <?php echo $this->Form->button('Sign in',array('type'=>'submit', 'class'=>'btn btn-primary')); ?>
-                            </div>
-                        </form>
                     </div>
                 </div>
-            </div>
-            <!-- End of Modal -->
-			<?php echo $this->Session->flash(); ?>
-
+            <?php }?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 </body>

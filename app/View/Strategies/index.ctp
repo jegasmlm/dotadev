@@ -1,17 +1,3 @@
-<div class="col-lg-2">
-	<div class="panel panel-default">
-		<div class="panel-heading"><h4><?php echo __('Actions'); ?></h4></div>
-		<div class="panel-body">
-			<div class="list-group">
-				<?php echo $this->Html->link(__('List Heros'), array('controller' => 'heroes', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-				<?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-				<?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-				<?php echo $this->Html->link(__('List Roles Heros'), array('controller' => 'roles_heros', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-				<?php echo $this->Html->link(__('List Users Heros'), array('controller' => 'users_heros', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-			</div>
-		</div>
-	</div>
-</div>
 <div class="strategies index">
 	<h2><?php echo __('Strategies'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -37,7 +23,7 @@
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $strategy['Strategy']['id']), array(), __('Are you sure you want to delete # %s?', $strategy['Strategy']['id'])); ?>
 		</td>
 	</tr>
-<?php endforeach; ?>
+	<?php endforeach; ?>
 	</tbody>
 	</table>
 	<p>

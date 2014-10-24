@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-6">
-                        <?php echo $this->Form->input('password', array('type'=>'password', 'class'=>'form-control', 'placeholder'=>'username'));?>
+                        <?php echo $this->Form->input('password', array('type'=>'password', 'class'=>'form-control', 'placeholder'=>'password'));?>
                     </div>
                 </div>
                 <div class="pull-right">

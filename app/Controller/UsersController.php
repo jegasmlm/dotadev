@@ -22,7 +22,7 @@ class UsersController extends AppController {
  */
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('add', 'logout', 'login');
+        $this->Auth->allow('logout', 'login');
     }
 
     public function login() {
