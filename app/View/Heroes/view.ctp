@@ -12,52 +12,29 @@
                     <?php echo $this->Html->image(str_replace(' ', '_', strtolower($hero['Hero']['name'])).'_full.png'); ?>
                 </div>
                 <div class="col-md-8">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <h4><?php echo $this->Html->link($hero['Side']['name'], array('controller' => 'sides', 'action' => 'view', $hero['Side']['id'])); ?></h4>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <h4><?php echo $this->Html->link($hero['Group']['name'], array('controller' => 'groups', 'action' => 'view', $hero['Group']['id'])); ?></h4>
                     </div>
-                    <div class="col-md-6">
-                        <div class="bestRol">
-                            <h4>
-                            <?php
-                                echo $topHeroRoles[0]['Role']['name']." - ".$topHeroRoles[1]['Role']['name'];
-                            ?>
-                            </h4>
+                    <div class="col-md-12">
+                        <div class="roleTittle">
+                            <h4><?php echo $topHeroRoles[0]['Role']['name']." - ".$topHeroRoles[1]['Role']['name']." - ".$topHeroRoles[2]['Role']['name'];?></h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8 col-md-push-1">
+                <div class="col-md-8">
                     <form role="form" name="form_Stats" id="form_Stats">
-                        <div class="col-md-2">Intelligence:</div>
-                        <div class="col-md-4">
-                            <?php echo $hero['Hero']['base_intelligence']; ?> + <?php echo $hero['Hero']['lvl_intelligence']; ?>
-                        </div>
-                        <div class="col-md-2">Attack</div>
-                        <div class="col-md-4">
-                            <?php echo $hero['Hero']['attack_min']; ?> - <?php echo $hero['Hero']['attack_max']; ?>
-                        </div>
-                        <div class="col-md-2">Agility:</div>
-                        <div class="col-md-4">
-                            <?php echo $hero['Hero']['base_agility']; ?> + <?php echo $hero['Hero']['lvl_agility']; ?>
-                        </div>
-                        <div class="col-md-2">Speed:</div>
-                        <div class="col-md-4">
-                            <?php echo $hero['Hero']['speed']; ?>
-                        </div>
-                        <div class="col-md-2">Strength:</div>
-                        <div class="col-md-4">
-                            <?php echo $hero['Hero']['base_strength']; ?> + <?php echo $hero['Hero']['lvl_strength']; ?>
-                        </div>
-                        <div class="col-md-2">Shield:</div>
-                        <div class="col-md-4">
-                            <?php echo $hero['Hero']['shield']; ?>
-                        </div>
+                        <div class="col-md-6"><strong>Intelligence: </strong><?php echo $hero['Hero']['base_intelligence']; ?> + <?php echo $hero['Hero']['lvl_intelligence']; ?></div>
+                        <div class="col-md-6"><strong>Attack: </strong><?php echo $hero['Hero']['attack_min']; ?> - <?php echo $hero['Hero']['attack_max']; ?></div>
+                        <div class="col-md-6"><strong>Agility: </strong><?php echo $hero['Hero']['base_agility']; ?> + <?php echo $hero['Hero']['lvl_agility']; ?></div>
+                        <div class="col-md-6"><strong>Speed: </strong><?php echo $hero['Hero']['speed']; ?></div>
+                        <div class="col-md-6"><strong>Strength: </strong><?php echo $hero['Hero']['base_strength']; ?> + <?php echo $hero['Hero']['lvl_strength']; ?></div>
+                        <div class="col-md-6"><strong>Shield: </strong><?php echo $hero['Hero']['shield']; ?></div>
                     </form>
                 </div>
             </div>
-            <a href="#" class="btn btn-primary btn-sm pull-right">Save Changes</a>
         </div>
     </div>
 </div>
