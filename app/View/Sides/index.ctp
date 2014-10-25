@@ -1,4 +1,4 @@
-<div class="col-lg-8">
+<div class="col-lg-8 col-lg-push-2">
 	<div class="panel panel-default">
 		<!-- Default Panel Contents -->
 		<div class="panel-heading">

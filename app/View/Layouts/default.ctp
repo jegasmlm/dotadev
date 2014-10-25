@@ -49,6 +49,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     </div>
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav">
+                            <li><a href="#" >Create Team</a></li>
+                            <li><a href="#" >Create Strategy</a></li>
+                            <li><a href="#" >Compare Heroes</a></li>
                             <li class="dropdown" id="randomSec">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Generate Team <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -61,7 +64,26 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                 </ul>
                             </li>
                             <?php if($this->Session->read('Auth.User') != null){?>
-                                <li><?php echo $this->Html->link('Administrator', array('controller'=>'Heroes', 'action'=>'index')); ?></li>
+                                <li class="dropdown" id="AdminActions">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Actions<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <?php echo $this->Html->link(__('List Heroes'), array('controller' => 'heroes', 'action' => 'index')); ?>
+                                        </li>
+                                        <li>
+                                            <?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index')); ?>
+                                        </li>
+                                        <li>
+                                            <?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index')); ?>
+                                        </li>
+                                        <li>
+                                            <?php echo $this->Html->link(__('List Strategies'), array('controller' => 'strategies', 'action' => 'index')); ?>
+                                        </li>
+                                        <li>
+                                            <?php echo $this->Html->link(__('List Roles Heros'), array('controller' => 'roles_heros', 'action' => 'index')); ?>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <p class="navbar-text navbar-right">Signed in as <?php echo $this->Session->read('Auth.User.username');?></p>
                             <?php }?>
                         </ul>
@@ -75,23 +97,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             </nav>
         </div>
 		<div>
-            <?php if($this->Session->read('Auth.User') != null){?>
-                <div class="col-lg-2">
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><h4><?php echo __('Actions'); ?></h4></div>
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <?php echo $this->Html->link(__('List Heros'), array('controller' => 'heroes', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-                                <?php echo $this->Html->link(__('List Sides'), array('controller' => 'sides', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-                                <?php echo $this->Html->link(__('List Groups'), array('controller' => 'groups', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-                                <?php echo $this->Html->link(__('List Strategies'), array('controller' => 'strategies', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-                                <?php echo $this->Html->link(__('List Roles Heros'), array('controller' => 'roles_heros', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-                                <?php echo $this->Html->link(__('List Users Heros'), array('controller' => 'users_heros', 'action' => 'index'),array('class'=>'list-group-item')); ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php }?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 </body>
