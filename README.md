@@ -1,9 +1,9 @@
 Dota2 Ask Project
 
-
 To find counters, teams and strategies
 
-Please run dotaDB.sql in Mysql
+Please
+Create a database and call it dotadev
+Run dotaDB.sql in Mysql
 
 
-Database name 'dotadev'
