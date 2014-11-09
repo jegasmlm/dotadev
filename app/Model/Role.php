@@ -31,21 +31,6 @@ class Role extends AppModel {
             'counterQuery' => ''
         )
     );
-	/*public $hasAndBelongsToMany = array(
-		'Strategy' => array(
-			'className' => 'Strategy',
-			'joinTable' => 'strategies_roles',
-			'foreignKey' => 'role_id',
-			'associationForeignKey' => 'strategy_id',
-			'unique' => 'keepExisting',
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-		)
-	);*/
 
     public function getRoles(){
         $this->recursive=-1;

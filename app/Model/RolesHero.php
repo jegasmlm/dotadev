@@ -17,31 +17,16 @@ class RolesHero extends AppModel {
 		'role_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'hero_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'level' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 	);
@@ -118,14 +103,11 @@ class RolesHero extends AppModel {
             $heroesId[$i] = $heroes[$i]['Hero']['id'];
         }
 
-        //$max=0;
-
         $this->virtualFields = array('total'=>'SUM(RolesHero.level)');
 
         for($i=0; $i<count($roles); $i++){
             $avgLevel = $this->find('all', array('fields'=>array('total'), 'conditions' => array('RolesHero.hero_id'=>$heroesId, 'RolesHero.role_id'=>$roles[$i]['Role']['id'])));
             $roles[$i]['Role']['avgLevel'] = $avgLevel[0]['RolesHero']['total'];
-            //if($max < $roles[$i]['Role']['avgLevel']) $max = $roles[$i]['Role']['avgLevel'];
         }
 
         for($i=0; $i<count($roles); $i++){
