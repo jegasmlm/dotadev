@@ -107,13 +107,33 @@ class HeroesController extends AppController {
 				$this->Session->setFlash(__('The hero could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
+			$options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id), 'recursive' => 2);
 			$this->request->data = $this->Hero->find('first', $options);
 		}
 		$sides = $this->Hero->Side->find('list');
 		$groups = $this->Hero->Group->find('list');
 		$this->set(compact('sides', 'groups'));
 	}
+    /*Function to edit primary Stats of the hero*/
+    public function edit_stats($id = null) {
+        if (!$this->Hero->exists($id)) {
+            throw new NotFoundException(__('Invalid hero'));
+        }
+        if ($this->request->is(array('post', 'put'))) {
+            if ($this->Hero->save($this->request->data)) {
+                $this->Session->setFlash(__('The hero has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The hero could not be saved. Please, try again.'));
+            }
+        } else {
+            $options = array('conditions' => array('Hero.' . $this->Hero->primaryKey => $id));
+            $this->request->data = $this->Hero->find('first', $options);
+        }
+        $sides = $this->Hero->Side->find('list');
+        $groups = $this->Hero->Group->find('list');
+        $this->set(compact('sides', 'groups'));
+    }
 
 /**
  * delete method

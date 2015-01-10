@@ -1,25 +1,34 @@
-<div class="rolesHeros form">
-<?php echo $this->Form->create('RolesHero'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Roles Hero'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('role_id');
-		echo $this->Form->input('hero_id');
-		echo $this->Form->input('level');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<div class="col-lg-8 col-lg-push-2">
+    <div class="rolesHeros form">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h1>Edit Role Hero</h1>
+            </div>
+            <?php echo $this->Form->create('RolesHero'); ?>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <?php echo $this->Html->image(str_replace(' ', '_', strtolower($this->request->data['Hero']['name'])).'_full.png'); ?>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-8">
+                            <h2><?php echo $this->request->data['Hero']['name']; ?></h2>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <?php
+                        echo $this->Form->input('id');
+                        echo $this->Form->input('role_id', array('class'=>'form-control', 'disabled'));
+                        echo $this->Form->input('hero_id', array('class'=>'form-control', 'disabled'));
+                        echo $this->Form->input('level', array('class'=>'form-control'));
+                        ?>
+                    </div>
+                    <div class="col-lg-12">
+                        <?php echo $this->Form->button('Save Changes',array('type'=>'submit', 'class'=>'btn btn-primary pull-right')); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('RolesHero.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('RolesHero.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Roles Heros'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Roles'), array('controller' => 'roles', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Role'), array('controller' => 'roles', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Heroes'), array('controller' => 'heroes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Hero'), array('controller' => 'heroes', 'action' => 'add')); ?> </li>
-	</ul>
-</div>

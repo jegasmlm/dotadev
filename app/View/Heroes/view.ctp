@@ -3,7 +3,7 @@
         <div class="panel-heading">
             <h1>
                 <?php echo h($hero['Hero']['name']); ?>
-                <?php echo $this->Html->link('Edit', array('controller'=>'#','action'=>'#'), array('class'=>'btn btn-default btn-md pull-right disabled')); ?>
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit_stats', $hero['Hero']['id']), array('class'=>'btn btn-warning btn-xs pull-right')); ?>
             </h1>
         </div>
         <div class="panel-body">
@@ -43,7 +43,6 @@
         <div class="panel-heading">
             <h2>
                 Roles Clasification
-                <?php echo $this->Html->link('Edit', array('controller'=>'#','action'=>'#'), array('class'=>'btn btn-default btn-md pull-right disabled')); ?>
             </h2>
         </div>
         <div class="panel-body">
@@ -60,26 +59,24 @@
                 <div class="col-md-2"><?php echo $rolesHero['Role']['name']; ?></div>
                 <div class="col-md-8">
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-default btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','minus')">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </button>
                     </div>
                     <div class="col-md-10">
                         <div class="progress">
-                            <div id="<?php echo $rolesHero['Role']['name']; ?>" class="active progress-bar-striped progress-bar <?php echo $bar; ?>" role="progressbar" aria-valuenow="<?php echo $level; ?>" aria-valuemin="0" aria-valuemax="10" style="width:<?php echo $level*10; ?>%">
+                            <div id="<?php echo $rolesHero['Role']['name']; ?>"
+                                 class="active progress-bar progress-bar <?php echo $bar; ?>"
+                                 role="progressbar"
+                                 aria-valuenow="<?php echo $level; ?>"
+                                 aria-valuemin="0" aria-valuemax="10"
+                                 style="width:<?php echo $level*10; ?>%">
                                 <?php echo $level*10; ?>%
                             </div>
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-default btn-xs" onclick="updateBar('<?php echo $rolesHero['Role']['name']; ?>','plus')">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </button>
                     </div>
                 </div>
             </div>
             <?php endforeach; ?>
-                    <a href="#" class="btn btn-primary btn-sm pull-right">Save Changes</a>
         </div>
     </div>
 </div>

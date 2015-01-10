@@ -14,8 +14,6 @@
 					<th><?php echo $this->Paginator->sort('role_id'); ?></th>
 					<th><?php echo $this->Paginator->sort('hero_id'); ?></th>
 					<th><?php echo $this->Paginator->sort('level'); ?></th>
-					<th><?php echo $this->Paginator->sort('created'); ?></th>
-					<th><?php echo $this->Paginator->sort('modified'); ?></th>
 					<th class="actions"><?php echo __('Actions'); ?></th>
 				</tr>
 			</thead>
@@ -30,8 +28,6 @@
 					<?php echo $this->Html->link($rolesHero['Hero']['name'], array('controller' => 'heroes', 'action' => 'view', $rolesHero['Hero']['id'])); ?>
 				</td>
 				<td><?php echo h($rolesHero['RolesHero']['level']); ?>&nbsp;</td>
-				<td><?php echo h($rolesHero['RolesHero']['created']); ?>&nbsp;</td>
-				<td><?php echo h($rolesHero['RolesHero']['modified']); ?>&nbsp;</td>
 				<td class="actions">
 					<?php echo $this->Html->link(__('View'), array('action' => 'view', $rolesHero['RolesHero']['id']), array('class'=>'btn btn-success btn-xs')); ?>
 					<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $rolesHero['RolesHero']['id']), array('class'=>'btn btn-warning btn-xs')); ?>

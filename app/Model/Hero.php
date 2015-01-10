@@ -254,7 +254,12 @@ class Hero extends AppModel {
 
         return $heroes;
     }
+    public function getHeroRoles($id){
+        $options = array('conditions' => array('Hero.' . $this->primaryKey => $id), 'recursive' => 2);
 
+        return $this->find('first', $options);
+
+    }
     public function getHeroByGroup($group_id){
         return $this->find('all', array('conditions' => array('Hero.group_id' => $group_id)));
     }
