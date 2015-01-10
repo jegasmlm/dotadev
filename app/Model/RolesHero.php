@@ -92,7 +92,7 @@ class RolesHero extends AppModel {
     }
 
     public function getRandomHeroeByRole($role_id){
-        return $this->find('first', array('conditions' => array('RolesHero.role_id' => $role_id), 'order' => array('RolesHero.role_id' => 'asc')));
+        return $this->find('first', array('conditions' => array('RolesHero.role_id' => $role_id, 'RolesHero.level >' => 5), 'order' => array('RolesHero.role_id' => 'asc')));
     }
 
     public function getRandomTeamByRoles($roles){
