@@ -3,7 +3,6 @@
 	"description": "The CakePHP framework",
 	"type": "library",
 	"keywords": ["framework"],
-	"homepage": "http://cakephp.org",
 	"license": "MIT",
 	"authors": [
 		{
