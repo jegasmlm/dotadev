@@ -2,7 +2,7 @@
 	"name": "cakephp/cakephp",
 	"description": "DotaDev",
 	"type": "library",
-	"keywords": ["framework"],
+	"keywords": [],
 	"license": "MIT",
 	"authors": [
 		{
