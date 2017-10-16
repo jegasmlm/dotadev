@@ -167,6 +167,7 @@ class Hero extends AppModel {
     }
 
     public function getRandomTeam(){
+	$recursive = $this->recursive;
         $this->recursive = -1;
 
         $heroesId = array();
@@ -179,6 +180,7 @@ class Hero extends AppModel {
             $heroes[$i]['Roles'] = $this->RolesHero->getRolesHero($heroes[$i]['Hero']['id']);
         }
 
+	$this->recursive = $recursive;
         return $heroes;
     }
 
